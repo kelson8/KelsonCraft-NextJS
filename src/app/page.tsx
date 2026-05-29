@@ -16,13 +16,22 @@ import Image from 'next/image'
 // https://stackoverflow.com/questions/65428940/next-js-image-centering-while-screen-size-increases
 // https://stackoverflow.com/questions/75036276/center-an-image-in-tailwind-css
 
+// TODO Look into this
+// https://www.slingacademy.com/article/nextjs-how-to-access-files-in-public-folder/
+
+// I used this for making the development server work on the LAN:
+// https://stackoverflow.com/questions/68254828/running-a-development-server-on-nextjs-on-the-network
+// Set this argument in Webstorm: -H (local-ip)
+
+// TODO Look into using Next Auth for Next.js authentication.
+
 const Page = () => {
 
     return (
         <div>
             <MainContainer>
                 <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">KelsonCraft Website</h1>
+                <h1 className="text-4xl text-center text-indigo-500 text-bold">Home Page</h1>
                 <br></br>
 
                 <div
@@ -33,6 +42,7 @@ const Page = () => {
                         to be using
                         NextJS with Typescript and Tailwind CSS. The old one was using Python Flask and Bootstrap
                         CSS.</p>
+                    <br></br>
 
                     <p> I&#39;ve started working on this new website on May 29, 2026 and plan to have it up and running
                         soon. <br></br>
