@@ -5,6 +5,13 @@ This will be the future home of the [KelsonCraft](https://kelsoncraft.net) websi
 So far there isn't much in here, but I plan on migrating the entire website from
  Python Flask to Next.js.
 
+Here is some screenshots of the website design, this isn't fully complete just yet.
+
+<details>
+<summary> Home Page </summary>
+<img src="screenshots/website-home.png?raw=true" alt="Home Page Screenshot">
+</details>
+
 # License
 Since this project will mostly be used on web servers, I have decided to license this
  under the AGPLv3 license, the original website was licensed under GPLv3.
