@@ -3,6 +3,12 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
+// import Font Awesome CSS
+// https://stackoverflow.com/questions/44752189/how-to-add-font-awesome-to-next-js-project
+import "@fortawesome/fontawesome-svg-core/styles.css";
+// This doesn't seem to be needed.
+// import { config } from "@fortawesome/fontawesome-svg-core";
+
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
