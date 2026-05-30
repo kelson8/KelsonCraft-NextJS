@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer } from '../partials/footer';
+import { Footer } from '@/app/partials/footer';
 import NavbarPage from "@/app/partials/navbar";
 
 interface MainContainerProps {

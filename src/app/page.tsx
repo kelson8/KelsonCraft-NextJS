@@ -1,6 +1,6 @@
 import React from 'react'
-// import {CustomLink} from "@/app/util/custom-link";
-import {MainContainer} from "@/app/components/main-container";
+// import {CustomLink} from "@/util/custom-link";
+import {MainContainer} from "@/components/main-container";
 import Image from 'next/image'
 
 // Using this tutorial for learning more Next.js 16

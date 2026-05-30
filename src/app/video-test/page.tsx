@@ -1,6 +1,6 @@
 import React from 'react'
-import {MainContainer} from "@/app/components/main-container";
-import {ReadVideoJson} from "@/app/components/read-video-json";
+import {MainContainer} from "@/components/main-container";
+import {ReadVideoJson} from "@/components/read-video-json";
 
 // Video list page, I will make this play videos with React Player in the future.
 // This might be useful to look into later
