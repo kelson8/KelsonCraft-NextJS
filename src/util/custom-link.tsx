@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
-import { AnchorHTMLAttributes, forwardRef, ReactNode, useState } from "react";
+import { AnchorHTMLAttributes, forwardRef } from "react";
 
 // Mostly used from this Medium article
 // https://medium.com/@radovanbotik/link-component-in-next-js-15-d5a72042d5a7

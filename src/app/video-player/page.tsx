@@ -2,11 +2,11 @@ import React from 'react'
 import {MainContainer} from "@/components/main-container";
 import {ReadVideoJson} from "@/components/read-video-json";
 
-// Video list page, I will make this play videos with React Player in the future.
+// Video list page, this will play the videos from the videos.json.
 // This might be useful to look into later
 // https://www.slingacademy.com/article/next-js-how-to-set-page-title-and-meta-description/
 
-const Page = () => {
+const VideoListPage = () => {
 
     return (
         <div>
@@ -26,4 +26,4 @@ const Page = () => {
     );
 }
 
-export default Page;
+export default VideoListPage;

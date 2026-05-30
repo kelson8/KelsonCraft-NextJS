@@ -59,7 +59,8 @@ const Page = () => {
 
                 {/* KelsonCraft logo, I may remove this later. */}
                 <div className="p-6 flex justify-center">
-                    <Image src="/android-chrome-512x512.png" alt="KelsonCraft Logo 512x512" width={128} height={128}></Image>
+                    <Image src="/android-chrome-512x512.png" alt="KelsonCraft Logo 512x512" width={128}
+                           height={128}></Image>
                 </div>
             </MainContainer>
         </div>

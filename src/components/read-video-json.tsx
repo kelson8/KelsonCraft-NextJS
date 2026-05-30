@@ -1,11 +1,15 @@
 // import { promises as fs } from "fs";
 import fsPromises from 'fs/promises';
+import {videosJsonFile, videoUrl} from "@/util/constants";
 
 // https://vercel.com/kb/guide/loading-static-file-nextjs-api-route
 
 // https://stackoverflow.com/questions/40950546/react-js-right-way-to-iterate-over-object-instead-of-object-entries
 // https://www.geeksforgeeks.org/typescript/what-is-the-record-type-in-typescript/
 
+/**
+ * The video entry parameters from the JSON file.
+ */
 type VideoEntry = {
     title: string;
     description: string;
@@ -13,8 +17,10 @@ type VideoEntry = {
     restricted: boolean;
 }
 
+/**
+ * Read the list of videos from the videos.json file
+ */
 export async function ReadVideoJson() {
-    const videosJsonFile = process.cwd() + "/src/app/videos.json"
 
     const jsonData = await fsPromises.readFile(videosJsonFile, 'utf8');
     const data: Record<string, VideoEntry> = JSON.parse(jsonData);
@@ -25,24 +31,12 @@ export async function ReadVideoJson() {
                 <li key={id}>
                     <strong>{v.title}</strong> {v.restricted && <span>(restricted)</span>}
                     <div>{v.description || <em>No description</em>}</div>
-                    <div>File: {v.file}</div>
-                    <div>Video ID: {id}</div>
-                    {/* To use this to add videos to: */}
-                    {/* <video controls width={480} src={`/videos/${v.file}`} /> */}
+                    {/*<div>File: {v.file}</div>*/}
+                    <div>Video URL: <a href={videoUrl + "/" + v.file}>{videoUrl + "/" + id}</a>
+                    </div>
+                    <br></br>
                 </li>
             ))}
-
-            {/*                <p key={i}>
-                <span> Key Name: {key}</span>
-                <span>Value: {jsonData[key]}</span>
-            </p>
-
-             */}
-            {/*<h1>Title: {data.title}</h1>*/}
-            {/*/!*<h1>Title: {jsonData.title}</h1>*!/*/}
-            {/*<p>Description: {data.description}</p>*/}
-            {/*<p>Filename: {data.file}</p>*/}
-            {/*<p>Is restricted: {data.restricted}</p>*/}
         </div>
     )
 
