@@ -1,11 +1,15 @@
 "use client";
 
-import {BlueLink, CustomLink} from "@/util/custom-link";
+import {BlueLink} from "@/util/custom-link";
 import React from "react";
 import {MainContainer} from "@/components/main-container";
+import {containerPageClass} from "@/util/constants";
 
 // https://www.youtube.com/watch?v=GCipVDqBD3k
 // Custom 404 page
+
+// TODO Look into this
+// https://dev.to/alisamir/unauthorized-and-forbidden-pages-in-nextjs-15-2jm
 
 // TODO Fix these up later, it can be used for multiple error pages.
 // type ErrorPage = {
@@ -40,9 +44,7 @@ export default function NotFound() {
                     <br></br>
 
                     <div
-                        className="container mx-auto bg-white border border-gray-300 rounded-lg p-6 shadow-lg m-4 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-200">
-
-
+                        className={containerPageClass}>
                     <h1 className="text-center text-2xl font-bold"> Error 404 </h1>
             <p> Page not found.
             <br></br>

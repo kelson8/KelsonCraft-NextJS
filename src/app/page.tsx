@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faServer} from "@fortawesome/free-solid-svg-icons";
+import {containerPageClass} from "@/util/constants";
 
 // Using this tutorial for learning more Next.js 16
 // https://youtu.be/I1V9YWqRIeI?t=1037
@@ -45,7 +46,7 @@ const Page = () => {
                 <br></br>
 
                 <div
-                    className="container mx-auto bg-white border border-gray-300 rounded-lg p-6 shadow-lg m-4 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-200">
+                    className={containerPageClass}>
 
                     <p>Welcome to the new KelsonCraft website, this website is
                         going

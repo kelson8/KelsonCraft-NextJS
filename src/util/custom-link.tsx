@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import { AnchorHTMLAttributes, forwardRef } from "react";
+import {blueLinkCss} from "@/util/constants";
 
 // Mostly used from this Medium article
 // https://medium.com/@radovanbotik/link-component-in-next-js-15-d5a72042d5a7
@@ -65,7 +66,7 @@ export function BlueLink(url: string, text: string) {
         <>
         <Link
             href={url}
-            className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
+            className={blueLinkCss}>
             {text}
         </Link>
         </>

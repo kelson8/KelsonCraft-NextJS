@@ -3,6 +3,7 @@
 import React from 'react'
 import {MainContainer} from "@/components/main-container";
 import VideoPlayer from "@/components/video-player";
+import {containerPageClass} from "@/util/constants";
 
 // Video player page
 
@@ -32,7 +33,7 @@ export default async function VideoPlayerPage({
                 <br></br>
 
                 <div
-                    className="container mx-auto bg-white border border-gray-300 rounded-lg p-6 shadow-lg m-4 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-200">
+                    className={containerPageClass}>
                     {/* Play a video from the file specified in the params. */}
                     {/* This works! Now to make it work for other videos. */}
                     {/* TODO Setup the video title for this later. */}

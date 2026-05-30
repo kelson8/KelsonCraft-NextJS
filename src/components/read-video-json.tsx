@@ -1,6 +1,7 @@
 // import { promises as fs } from "fs";
 import fsPromises from 'fs/promises';
-import {videosJsonFile, videoUrl} from "@/util/constants";
+import {blueLinkCss, videosJsonFile, videoUrl} from "@/util/constants";
+// import {BlueLink} from "@/util/custom-link";
 
 // https://vercel.com/kb/guide/loading-static-file-nextjs-api-route
 
@@ -32,7 +33,9 @@ export async function ReadVideoJson() {
                     <strong>{v.title}</strong> {v.restricted && <span>(restricted)</span>}
                     <div>{v.description || <em>No description</em>}</div>
                     {/*<div>File: {v.file}</div>*/}
-                    <div>Video URL: <a href={videoUrl + "/" + v.file}>{videoUrl + "/" + id}</a>
+                    <div>Video URL: <a className={blueLinkCss} href={videoUrl + "/" + v.file}>{videoUrl + "/" + id}</a>
+                        {/* TODO Make this work, since it's a client component it doesn't work here. */}
+                        {/*<div>Video URL: {BlueLink(videoUrl + "/" + v.file, videoUrl + "/" + id)}*/}
                     </div>
                     <br></br>
                 </li>
