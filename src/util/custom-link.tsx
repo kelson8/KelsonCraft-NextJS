@@ -53,3 +53,21 @@ export const CustomLink = forwardRef<HTMLAnchorElement, LinkType>(function Navli
         </Link>
     );
 });
+
+/**
+ * Make a blue link for urls with Tailwind classes.
+ * https://stackoverflow.com/questions/63883580/tailwind-css-how-to-style-a-href-links-in-react
+ * @param url The url to display.
+ * @param text The text for the url to display, such as 'Click Here' or something.
+ */
+export function BlueLink(url: string, text: string) {
+    return (
+        <>
+        <Link
+            href={url}
+            className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
+            {text}
+        </Link>
+        </>
+    )
+}
