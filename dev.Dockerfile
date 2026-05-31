@@ -1,5 +1,7 @@
 FROM node:24.12.0
 
+# TODO Make this use the non-root app user.
+
 WORKDIR /usr/src/app
 
 # Install pnpm
@@ -21,6 +23,8 @@ RUN mkdir -p /home/app/.cache/node/corepack && chown -R app:app /home/app/.cache
 
 # Setup the .next folder permissions.
 RUN mkdir -p /usr/src/app/.next && chown -R app:app /usr/src/app/.next
-USER app
+
+# Disable this for now.
+#USER app
 
 CMD ["pnpm", "dev", "--hostname", "0.0.0.0"]

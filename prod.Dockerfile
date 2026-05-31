@@ -1,6 +1,8 @@
 # Builder
 FROM node:24.12.0 AS builder
 
+# TODO Make this use the non-root app user.
+
 WORKDIR /usr/src/app
 
 # Enable corepack to provide pnpm
@@ -47,7 +49,7 @@ RUN pnpm install --prod --frozen-lockfile
 
 RUN chown -R app:app /usr/src/app
 
-USER app
+#USER app
 
 ENV NODE_ENV=production
 EXPOSE 3000
