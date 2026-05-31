@@ -1,0 +1,34 @@
+services:
+  kelsoncraft-nextjs:
+    # Run the dev server for now, switch to prod.Dockerfile when deploying onto the VPS.
+    # TODO Switch to prod.Dockerfile when deploying onto the VPS.
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+      # dockerfile: prod.Dockerfile
+    container_name: kelsoncraft-nextjs
+    networks:
+      - testing
+    volumes:
+      # - ./:/data
+      - ./:/usr/src/app:cached
+      # Don't mount node_modules or .next from the host.
+      - /usr/src/app/node_modules
+      - /usr/src/app/.next
+      # TODO Change this download directory for the NextJS server.
+      #      - /mnt/docker_volume/flask_downloads:/downloads
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      # TODO Change this when deploying onto the VPS.
+      #      - "127.0.0.1:3000:3000"
+      - "3000:3000"
+    environment:
+      # Disable this when deploying onto the VPS.
+      - NODE_ENV=development
+    restart: unless-stopped
+    # For now, this just runs the dev server for NextJS.
+    command: ["pnpm", "dev", "--hostname", "0.0.0.0"]
+
+networks:
+  testing:
+    external: true

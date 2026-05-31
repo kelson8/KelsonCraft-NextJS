@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import React from 'react'
 import {MainContainer} from "@/components/main-container";
@@ -16,13 +16,15 @@ import {containerPageClass} from "@/util/constants";
  * Video player page, currently setup to play videos with react-player
  * @param params The params for the video player, used for the url.
  */
-export default async function VideoPlayerPage({
+// export default async function VideoPlayerPage({
+export default function VideoPlayerPage({
                                                   params,
                                               }: {
     params: Promise<{ slug: string }>
 }) {
 
-    const {slug} = await params;
+    // const {slug} = await params;
+    const {slug} = React.use(params);
 
     return (
         <div>

@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
 // Set up the default dev server IP to be allowed in the dev origins.
 module.exports = {
     allowedDevOrigins: [devServerIp],
+    // This should be disabled when using the prod.Dockerfile.
+    // Actually, I don't think this is needed, it works without it in the dev.Dockerfile.
+    // output: 'standalone',
 }
 
 

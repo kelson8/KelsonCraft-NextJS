@@ -1,12 +1,13 @@
 // I guess this wasn't needed?
 // Well this is needed for plyr-react, otherwise it says doucment is not defined.
 // TODO Fix this to work with plyr-react.
-// "use client";
+"use client";
 import React from "react";
 import ReactPlayer from "react-player";
 
 // import { Plyr } from "plyr-react"
-import "plyr-react/plyr.css"
+// import "plyr-react/plyr.css"
+import {Plyr} from "plyr-react";
 
 // Video player test, using React Player
 // https://www.npmjs.com/package/react-player
@@ -22,40 +23,38 @@ const VideoPlayer = (videoTitle: string, videoFile: string) => {
     // const videoTitle = "NCS Kawaii Mix | NCS - Copyright Free Music";
 
 // Player source configuration
-    /*
-    const plyrProps = {
-        source: {
-            type: "video",
-            sources: [
-                {
-                    // src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4",
-                    src: videoFile,
-                    type: "video/mp4",
-                    // TODO Make this size value not hard-coded, have it obtain from the video file with something.
-                    size: 720,
-                },
-            ],
-            // poster:
-                // "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg",
-        },
-        options: {
-            // Full list of options: https://github.com/sampotts/plyr#options
-            controls: [
-                "play-large",
-                "play",
-                "progress",
-                "current-time",
-                "mute",
-                "volume",
-                "captions",
-                "settings",
-                "pip",
-                "airplay",
-                "fullscreen",
-            ],
-        },
-    }
-    */
+//     const plyrProps = {
+//         source: {
+//             type: "video",
+//             sources: [
+//                 {
+//                     // src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4",
+//                     src: videoFile,
+//                     type: "video/mp4",
+//                     // TODO Make this size value not hard-coded, have it obtain from the video file with something.
+//                     size: 720,
+//                 },
+//             ],
+//             // poster:
+//                 // "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg",
+//         },
+//         options: {
+//             // Full list of options: https://github.com/sampotts/plyr#options
+//             controls: [
+//                 "play-large",
+//                 "play",
+//                 "progress",
+//                 "current-time",
+//                 "mute",
+//                 "volume",
+//                 "captions",
+//                 "settings",
+//                 "pip",
+//                 "airplay",
+//                 "fullscreen",
+//             ],
+//         },
+//     }
 
     return (
         <div>
