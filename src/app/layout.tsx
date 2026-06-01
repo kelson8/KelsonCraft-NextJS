@@ -3,6 +3,9 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
+// app/layout.tsx
+import { ThemeModeScript } from 'flowbite-react';
+
 // import Font Awesome CSS
 // https://stackoverflow.com/questions/44752189/how-to-add-font-awesome-to-next-js-project
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -32,10 +35,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
+    <html suppressHydrationWarning
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
+    <head>
+      <ThemeModeScript />
+    </head>
+
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
