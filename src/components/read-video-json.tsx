@@ -18,13 +18,44 @@ type VideoEntry = {
     restricted: boolean;
 }
 
+// export let videoTitle: string;
+
+// Try to search for the title in the json.
+function search(data: VideoEntry|VideoEntry[], s: string): VideoEntry[] {
+    let result: VideoEntry[] = [];
+    if (data instanceof Array) {
+        for (let i = 0; i < data.length; i++) {
+            result = result.concat(search(data[i], s));
+        }
+    } else {
+        // if (data.subNames instanceof Array) {
+        // if (data.title instanceof Array) {
+        //     result = result.concat(search(data.subNames, s));
+        // } else {
+            if (data.title === s) {
+                result = result.concat(data);
+            }
+        // }
+    }
+    return result;
+}
+
+// console.log(search(data, 'white'));
+
 /**
  * Read the list of videos from the videos.json file
+ * TODO Make this send the title to the video page metadata somehow
  */
 export async function ReadVideoJson() {
 
     const jsonData = await fsPromises.readFile(videosJsonFile, 'utf8');
     const data: Record<string, VideoEntry> = JSON.parse(jsonData);
+
+
+    // TODO Figure out how to set the video title for the page metadata.
+    // videoTitle = videoTitle;
+
+
 
     return (
         <div>
@@ -33,7 +64,7 @@ export async function ReadVideoJson() {
                     <strong>{v.title}</strong> {v.restricted && <span>(restricted)</span>}
                     <div>{v.description || <em>No description</em>}</div>
                     {/*<div>File: {v.file}</div>*/}
-                    <div>Video URL: <a className={blueLinkCss} href={videoUrl + "/" + v.file}>{videoUrl + "/" + id}</a>
+                    <div>Video URL: <a className={blueLinkCss} href={videoUrl + "/" + v.file}>{videoUrl + "/" + v.file}</a>
                         {/* TODO Make this work, since it's a client component it doesn't work here. */}
                         {/*<div>Video URL: {BlueLink(videoUrl + "/" + v.file, videoUrl + "/" + id)}*/}
                     </div>
