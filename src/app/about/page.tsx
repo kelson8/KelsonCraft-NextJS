@@ -44,7 +44,7 @@ const AboutPage = () => {
                         <br></br>
                         <a className={blueLinkCss} href="https://github.com/kelson8/KBP">https://github.com/kelson8/KBP</a>
                         <br></br>
-                        I haven&#39;t updated this in a while though and don&#39;t plan on it.\
+                        I haven&#39;t updated this in a while though and don&#39;t plan on it.
                     </p>
 
                     <br></br>

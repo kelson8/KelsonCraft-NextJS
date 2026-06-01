@@ -107,7 +107,12 @@ export function NavbarPage() {
                 <ul className="hidden md:flex items-center space-x-6">
                     <li>
                         {NavbarLink("/", "Home")}
+                        {NavbarLink("/about", "About")}
+                        {/* TODO Set these up later */}
+                        {/*{NavbarLink("/wiki", "Wiki")}*/}
+                        {/*{NavbarLink("/blog", "Blog")}*/}
                         {NavbarLink("/video-player", "Videos")}
+                        {/*{NavbarLink("/projects", "Projects")}*/}
                     </li>
                     {/*{status === 'authenticated' && ( // Only show if authenticated*/}
                     <>
@@ -177,7 +182,9 @@ export function NavbarPage() {
                 <ul className="flex flex-col items-center py-4 space-y-4 text-center">
                     <li>
                         {MobileNavbarLink("/", "Home")}
+                        {MobileNavbarLink("/about", "About")}
                         {MobileNavbarLink("/video-player", "Videos")}
+
                     </li>
 
                     {/*{status === 'authenticated' && (*/}
