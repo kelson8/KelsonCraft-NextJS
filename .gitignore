@@ -15,6 +15,14 @@ src/components/test-form.tsx
 # Incomplete auth pages
 src/app/(auth)
 
+# Other incomplete/test pages
+src/components/display-video-file.tsx
+src/components/plyr-video-player.tsx
+
+# SQLite databases
+*.db
+*.db-journal
+
 # Audio/video
 *.mp3
 *.mp4
@@ -73,3 +81,5 @@ env.bak/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/src/generated/prisma

@@ -11,81 +11,82 @@ import {blogUrl, wikiUrl} from "@/util/constants";
 /**
  * Display a navbar link in the navbar.
  * @param linkUrl The url to redirect to, such as '/video-player'.
- * @param linkTitle The navbar link title, such as 'Videos'.
  */
-function NavbarLink(linkUrl: string, linkTitle: string) {
+function NavbarLink({href, title}: { href: string; title: string }) {
     return (
-        <Link
-            href={linkUrl}
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400
-            transition-colors duration-200 font-medium py-2 px-3 rounded-md">
-            {linkTitle}
+        <Link href={href}
+              className="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition-colors duration-200 font-medium py-2 px-3 rounded-md">
+            {title}
         </Link>
-    )
+    );
 }
 
 /**
  * Display a navbar link in the navbar for mobile users.
  * @param linkUrl The url to redirect to, such as '/video-player'.
- * @param linkTitle The navbar link title, such as 'Videos'.
  */
-function MobileNavbarLink(linkUrl: string, linkTitle: string) {
-    const [isOpen, setIsOpen] = useState(false); // State to manage mobile menu open/close
-    // const { data: session, status } = useSession(); // Get session data
-
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
-
+function MobileNavbarLink({href, title, onClick}: { href: string; title: string; onClick?: () => void }) {
     return (
-        <Link
-            onClick={toggleMenu}
-            href={linkUrl}
-            className="block text-lg text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2 w-full">
-            {linkTitle}
+        <Link href={href}
+              className="block text-lg text-gray-700 dark:text-gray-200 hover:text-blue-600 font-medium py-2 w-full"
+              onClick={onClick}>
+            {title}
         </Link>
-    )
+    );
 }
+
 
 /**
  * Display the logo that also redirects back to the home page for the navbar.
  */
 function DisplayLogoForNavbar() {
     return (
-    <Link href="/" className="text-2xl font-bold text-rose-600 dark:text-rose-400 shrink-0">
-        {/* Display the KelsonCraft Logo */}
-        <Image
-            src="/android-chrome-192x192.png"
-            width={40}
-            height={40}
-            alt="KelsonCraft Logo"
-        />
-    </Link>
+        <Link href="/" className="text-2xl font-bold text-rose-600 dark:text-rose-400 shrink-0">
+            {/* Display the KelsonCraft Logo */}
+            <Image
+                src="/android-chrome-192x192.png"
+                width={40}
+                height={40}
+                alt="KelsonCraft Logo"
+            />
+        </Link>
     )
 }
 
 // const Navbar = () => {
 export function NavbarPage() {
-    // TODO Move this out of here, it should only be in a ToggleMobileNavbar function.
-    // I don't think this currently does anything in here.
-    const [isOpen, setIsOpen] = useState(false); // State to manage mobile menu open/close
-    // const { data: session, status } = useSession(); // Get session data
+    return (
+        <>
+            <NavbarContent/>
+        </>
+    )
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+}
+
+/**
+ * Display the navbar content
+ */
+function NavbarContent() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => setIsOpen(v => !v);
+    const close = () => setIsOpen(false);
 
     return (
-
         <nav className="fixed top-0 left-0 right-0 w-full bg-white dark:bg-gray-800 shadow-md p-4 z-50">
             <div className="container mx-auto flex items-center justify-between">
                 {/* Branding/Logo */}
-                <DisplayLogoForNavbar />
+                <DisplayLogoForNavbar/>
 
-                {/* Mobile menu button */}
-                {/* TODO Move this out of here, it should only be in a ToggleMobileNavbar function.*/}
+                <DesktopNavbarContent/>
+                {/*{MobileNavbarContent(mobileNavbarOpen)}*/}
+                {/*<MobileNavbarContent />*/}
+
+                {/* Mobile toggle button */}
                 <div className="md:hidden">
-                    <button onClick={toggleMenu} className="text-gray-700 dark:text-gray-200 focus:outline-none">
+
+                    {/* Mobile menu button */}
+                    <button onClick={toggle} className="text-gray-700 dark:text-gray-200 focus:outline-none">
                         {isOpen ? (
                             // Close icon (X)
                             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -102,21 +103,104 @@ export function NavbarPage() {
                             </svg>
                         )}
                     </button>
+
+                    {/* Mobile menu */}
+                    <div
+                        className={`md:hidden absolute left-0 right-0 top-full bg-white dark:bg-gray-800 shadow-lg overflow-hidden transition-all duration-300 ease-in-out ${
+                            isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+                        }`}
+                    >
+                        <ul className="flex flex-col items-center py-4 space-y-4 text-center">
+                            <li><MobileNavbarLink href="/" title="Home" onClick={close}/></li>
+                            <li><MobileNavbarLink href="/about" title="About" onClick={close}/></li>
+                            <li><MobileNavbarLink href={wikiUrl} title="Wiki" onClick={close}/></li>
+                            <li><MobileNavbarLink href={blogUrl} title="Blog" onClick={close}/></li>
+                            <li><MobileNavbarLink href="/video-player" title="Videos" onClick={close}/></li>
+                        </ul>
+                    </div>
+
                 </div>
 
-                {/* Desktop Navigation Links */}
-                <ul className="hidden md:flex items-center space-x-6">
-                    <li>
-                        {NavbarLink("/", "Home")}
-                        {NavbarLink("/about", "About")}
-                        {NavbarLink(wikiUrl, "Wiki")}
-                        {NavbarLink(blogUrl, "Blog")}
-                        {NavbarLink("/video-player", "Videos")}
-                        {/*{NavbarLink("/projects", "Projects")}*/}
-                    </li>
-                    {/*{status === 'authenticated' && ( // Only show if authenticated*/}
-                    <>
-                        {/* <li>
+            </div>
+
+
+        </nav>
+    )
+}
+
+function ToggleMobileNavbar() {
+    // TODO Move this out of here, it should only be in a ToggleMobileNavbar function.
+    // I don't think this currently does anything in here.
+    const [isOpen, setIsOpen] = useState(false); // State to manage mobile menu open/close
+    // const { data: session, status } = useSession(); // Get session data
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+    return (
+        <div className="md:hidden">
+            {/* Mobile menu button */}
+            <button onClick={toggleMenu} className="text-gray-700 dark:text-gray-200 focus:outline-none">
+                {isOpen ? (
+                    // Close icon (X)
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                              d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                ) : (
+                    // Hamburger icon
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                )}
+            </button>
+        </div>
+    )
+}
+
+//
+/**
+ * Display the test page if it is enabled in the .env
+ * TODO Fix this to work
+ */
+// const DisplayTestPageOnNavbar = () => {
+//     if (process.env.DISPLAY_TEST_PAGE_NAVBAR) {
+//         return (
+//             <>
+//                 {NavbarLink("/test", "Test")}
+//             </>
+//         )
+//     }
+// }
+
+/**
+ * Navbar for the desktop
+ */
+function DesktopNavbarContent() {
+
+    // Desktop Navigation Links
+    return (
+        <>
+
+            <ul className="hidden md:flex items-center space-x-6">
+                <li>
+                    <NavbarLink href="/" title="Home"/>
+                    <NavbarLink href="/about" title="About"/>
+                    <NavbarLink href={wikiUrl} title="Wiki"/>
+                    <NavbarLink href={blogUrl} title="Blog"/>
+                    <NavbarLink href="/video-player" title="Videos"/>
+
+                    {/*{DisplayTestPageOnNavbar()}*/}
+                    {/*<NavbarLink href="/projects" title="Projects" />*/}
+                </li>
+            </ul>
+
+            <>
+                {/* <li>
                 <Link
                   href="/dashboard"
                   className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium py-2 px-3 rounded-md"
@@ -124,15 +208,15 @@ export function NavbarPage() {
                   Dashboard
                 </Link>
               </li> */}
-                        {/*<li>*/}
-                        {/*    <Link*/}
-                        {/*        href="/admin"*/}
-                        {/*        className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium py-2 px-3 rounded-md"*/}
-                        {/*    >*/}
-                        {/*        Admin*/}
-                        {/*    </Link>*/}
-                        {/*</li>*/}
-                        {/* <li>
+                {/*<li>*/}
+                {/*    <Link*/}
+                {/*        href="/admin"*/}
+                {/*        className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium py-2 px-3 rounded-md"*/}
+                {/*    >*/}
+                {/*        Admin*/}
+                {/*    </Link>*/}
+                {/*</li>*/}
+                {/* <li>
                 <Link
                   href="/admin/status_checker"
                   className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium py-2 px-3 rounded-md"
@@ -140,32 +224,41 @@ export function NavbarPage() {
                   Status Checker (Admin)
                 </Link>
               </li> */}
-                    </>
-                    {/*)}*/}
-                    {/*{status === 'loading' ? (*/}
-                    {/*    <li className="text-gray-500 dark:text-gray-400">Loading...</li>*/}
-                    {/*) : (*/}
-                    {/*    // <li>*/}
-                    {/*    //     {status === 'authenticated' ? (*/}
-                    {/*    //         <button*/}
-                    {/*    //             onClick={() => signOut({ callbackUrl: '/' })}*/}
-                    {/*    //             className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200"*/}
-                    {/*    //         >*/}
-                    {/*    //             Sign Out ({session?.user?.name})*/}
-                    {/*    //         </button>*/}
-                    {/*    //     ) : (*/}
-                    {/*    //         <Link*/}
-                    {/*    //             href="/auth/signin"*/}
-                    {/*    //             className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200"*/}
-                    {/*    //         >*/}
-                    {/*    //             Sign In*/}
-                    {/*    //         </Link>*/}
-                    {/*    //     )}*/}
-                    {/*    // </li>*/}
-                    {/*)}*/}
-                </ul>
-            </div>
+            </>
+            {/*)}*/}
+            {/*{status === 'loading' ? (*/}
+            {/*    <li className="text-gray-500 dark:text-gray-400">Loading...</li>*/}
+            {/*) : (*/}
+            {/*    // <li>*/}
+            {/*    //     {status === 'authenticated' ? (*/}
+            {/*    //         <button*/}
+            {/*    //             onClick={() => signOut({ callbackUrl: '/' })}*/}
+            {/*    //             className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200"*/}
+            {/*    //         >*/}
+            {/*    //             Sign Out ({session?.user?.name})*/}
+            {/*    //         </button>*/}
+            {/*    //     ) : (*/}
+            {/*    //         <Link*/}
+            {/*    //             href="/auth/signin"*/}
+            {/*    //             className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200"*/}
+            {/*    //         >*/}
+            {/*    //             Sign In*/}
+            {/*    //         </Link>*/}
+            {/*    //     )}*/}
+            {/*    // </li>*/}
+            {/*)}*/}
 
+        </>
+    )
+}
+
+/**
+ * Navbar for the mobile menu
+ * TODO Move this into here, for now it is just in the NavbarContent function.
+ */
+function MobileNavbarContent(isOpen: boolean) {
+    return (
+        <>
             {/* Mobile Menu (conditionally rendered) */}
             {/*
         - md:hidden: Hides this menu on medium screens and up.
@@ -181,13 +274,12 @@ export function NavbarPage() {
             >
                 <ul className="flex flex-col items-center py-4 space-y-4 text-center">
                     <li>
-                        {MobileNavbarLink("/", "Home")}
-                        {MobileNavbarLink("/about", "About")}
-                        {MobileNavbarLink(wikiUrl, "Wiki")}
-                        {MobileNavbarLink(blogUrl, "Blog")}
-                        {MobileNavbarLink("/video-player", "Videos")}
-                        {/*{MobileNavbarLink("/projects", "Projects")}*/}
-
+                        <MobileNavbarLink href="/" title="Home"/>
+                        <MobileNavbarLink href="/about" title="About"/>
+                        <MobileNavbarLink href={wikiUrl} title="Wiki"/>
+                        <MobileNavbarLink href={blogUrl} title="Blog"/>
+                        <MobileNavbarLink href="/video-player" title="Videos"/>
+                        <MobileNavbarLink href="/projects" title="Projects"/>
                     </li>
 
                     {/*{status === 'authenticated' && (*/}
@@ -245,10 +337,11 @@ export function NavbarPage() {
                     {/*)}*/}
                 </ul>
             </div>
-        </nav>
 
+            <ToggleMobileNavbar/>
+
+        </>
     )
-
 }
 
 export default NavbarPage;

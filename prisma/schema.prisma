@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+// // To init db for testing:
+// pnpx prisma init --datasource-provider sqlite
+
+// To test inserting values into this SQLite DB:
+// I will need to setup password hashing for this, in it's current state it is very insecure.
+// INSERT INTO 'User' (id, username, email, password) VALUES(1, "admin", "admin@test.com", "TestPassword1")
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+
+// Adapted from users.sql.
+model User {
+  // TODO Possibly make this have a uuid instead of an ID
+  // id       String @id @default(uuid())
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  email    String @unique
+  role     Role   @default(BASIC)
+  // password String @db.VarChar(100)
+  password String
+
+  // https://stackoverflow.com/questions/64535044/timestamp-with-timezone-column-in-prisma
+  created_at DateTime @default(now())
+  // Disabled these for now.
+  // time_zone   String
+  // time_format String
+  // Can index with email, mostly to search with it.
+  // @@index([email])
+
+  // Make the email and username need to be unique.
+  @@unique([email, username])
+}
+
+// Role enum for user groups.
+enum Role {
+  BASIC
+  ADMIN
+}
+
+// Video Favorites, not in use
+// model video_favorites {
+//   id         Int      @id @default(autoincrement())
+//   video_url  String   @unique
+//   video_name String
+//   created_at DateTime @default(now())
+// }

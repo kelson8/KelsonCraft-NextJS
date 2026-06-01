@@ -36,7 +36,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 // TODO Look into setting up downloads outside of the public folder, try to somewhat mimic my Flask system for downloads
 // https://prateekbadjatya.medium.com/shield-your-data-how-to-manage-private-files-in-next-js-applications-5895c9093b1c
 
-const Page = () => {
+const HomePage = () => {
 
     return (
         <div>
@@ -46,39 +46,51 @@ const Page = () => {
                     <FontAwesomeIcon icon={faServer} className="fas fa-server" style={{ color: "whitesmoke" }}></FontAwesomeIcon></h1>
                 <br></br>
 
-                <div
-                    className={containerPageClass}>
+                <HomePageContents />
 
-                    <p>Welcome to the new KelsonCraft website, this website is
-                        going
-                        to be using
-                        NextJS with Typescript and Tailwind CSS. The old one was using Python Flask and Bootstrap
-                        CSS.</p>
-                    <br></br>
-
-                    <p> I&#39;ve started working on this new website on May 29, 2026 and plan to have it up and running
-                        soon. <br></br>
-                        Once I figure out how to replicate everything I was doing on the old website, which isn&#39;t
-                        much
-                        and is mostly just
-                        video playing and basic authentication, this should be ready for the public and to replace the
-                        main website. </p>
-
-                    {/*<CustomLink href="test.com" className="text-indigo-500">Test Link</CustomLink>*/}
-
-                </div>
-
-
-                {/* KelsonCraft logo, I may remove this later. */}
-                <div className="p-6 flex justify-center">
-                    <Image src="/android-chrome-512x512.png" alt="KelsonCraft Logo 512x512" width={128}
-                           height={128}></Image>
-                </div>
+                <HomePageLogo />
             </MainContainer>
-            {/*<ThemeToggle />*/}
         </div>
 
     );
 }
 
-export default Page;
+function HomePageContents() {
+    return (
+        <>
+            <div
+                className={containerPageClass}>
+
+                <p>Welcome to the new KelsonCraft website, this website is
+                    going
+                    to be using
+                    NextJS with Typescript and Tailwind CSS. The old one was using Python Flask and Bootstrap
+                    CSS.</p>
+                <br></br>
+
+                <p> I&#39;ve started working on this new website on May 29, 2026 and plan to have it up and running
+                    soon. <br></br>
+                    Once I figure out how to replicate everything I was doing on the old website, which isn&#39;t
+                    much
+                    and is mostly just
+                    video playing and basic authentication, this should be ready for the public and to replace the
+                    main website. </p>
+
+                {/*<CustomLink href="test.com" className="text-indigo-500">Test Link</CustomLink>*/}
+
+            </div>
+        </>
+    )
+}
+
+function HomePageLogo() {
+    return (
+            // KelsonCraft logo.
+            <div className="p-6 flex justify-center">
+                <Image src="/android-chrome-512x512.png" alt="KelsonCraft Logo 512x512" width={128}
+                       height={128}></Image>
+            </div>
+    )
+}
+
+export default HomePage;
