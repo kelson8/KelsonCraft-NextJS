@@ -1,6 +1,7 @@
 import React from 'react'
 import {MainContainer} from "@/components/main-container";
 import {blueLinkCss, containerPageClass} from "@/util/constants";
+import {Metadata} from "next";
 
 // Video list page, this will play the videos from the videos.json.
 // This might be useful to look into later
@@ -15,6 +16,10 @@ import {blueLinkCss, containerPageClass} from "@/util/constants";
 
 // Flowbite tables
 // https://flowbite.com/docs/components/tables/
+
+export const metadata: Metadata = {
+    title: "About",
+}
 
 const AboutPage = () => {
 

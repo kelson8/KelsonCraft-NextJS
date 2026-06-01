@@ -2,10 +2,15 @@ import React from 'react'
 import {MainContainer} from "@/components/main-container";
 import {ReadVideoJson} from "@/components/read-video-json";
 import {containerPageClass} from "@/util/constants";
+import {Metadata} from "next";
 
 // Video list page, this will play the videos from the videos.json.
 // This might be useful to look into later
 // https://www.slingacademy.com/article/next-js-how-to-set-page-title-and-meta-description/
+
+export const metadata: Metadata = {
+    title: "Video List",
+}
 
 const VideoListPage = () => {
 

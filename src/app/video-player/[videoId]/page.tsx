@@ -1,9 +1,11 @@
-"use client";
+// "use client";
 
 import React from 'react'
 import {MainContainer} from "@/components/main-container";
 import VideoPlayer from "@/components/video-player";
 import {containerPageClass} from "@/util/constants";
+// import CustomVideoPlayer from "@/components/custom-video-player";
+// import {displayVideoFile} from "@/components/display-video-file";
 
 // Video player page
 
@@ -17,14 +19,16 @@ import {containerPageClass} from "@/util/constants";
  * @param params The params for the video player, used for the url.
  */
 // export default async function VideoPlayerPage({
-export default function VideoPlayerPage({
-                                                  params,
-                                              }: {
-    params: Promise<{ slug: string }>
+// export default function VideoPlayerPage({ params }: {
+export default async function VideoPlayerPage({ params }: {
+    params: Promise<{ videoId: string }>
 }) {
 
-    // const {slug} = await params;
-    const {slug} = React.use(params);
+    // const videoId = (await params).videoId;
+    const {videoId} = await params;
+    // console.log(videoId);
+    // const videoTitle = (await params).videoTitle;
+    // console.log("Video title: " + videoTitle);
 
     return (
         <div>
@@ -39,8 +43,8 @@ export default function VideoPlayerPage({
                     {/* Play a video from the file specified in the params. */}
                     {/* This works! Now to make it work for other videos. */}
                     {/* TODO Setup the video title for this later. */}
-                    {VideoPlayer("Test Video", "/videos/" + slug)}
-
+                    {VideoPlayer("Test Video", "/videos/" + videoId)}
+                    {/*{CustomVideoPlayer("/videos/" + videoId)}*/}
                 </div>
             </MainContainer>
         </div>

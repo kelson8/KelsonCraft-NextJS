@@ -25,7 +25,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KelsonCraft",
+  title: {
+    default: "KelsonCraft",
+    template: "%s | KelsonCraft",
+    absolute: ""
+  },
+
   description: "New and improved KelsonCraft website",
 };
 
@@ -39,9 +44,7 @@ export default function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
-    <head>
-      <ThemeModeScript />
-    </head>
+
 
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

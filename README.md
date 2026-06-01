@@ -23,6 +23,22 @@ Here is some screenshots of the website design, this isn't fully complete just y
 <img src="screenshots/website-video-list.png?raw=true" alt="Home Page Screenshot">
 </details>
 
+# Setup
+I tried to get this working with docker, but couldn't figure it out.
+
+You will need Node.js 24, pnpm, and pm2 installed for this to work
+
+First, install the dependencies
+* pnpm install
+Then, run the server
+
+**Dev server**
+* pm2 start npm --name "kelsoncraft-nextjs" -- run dev
+
+**Production server**
+* pnpm run build
+* pm2 start npm --name "kelsoncraft-nextjs" -- run start
+
 # License
 Since this project will mostly be used on web servers, I have decided to license this
  under the AGPLv3 license, the original website was licensed under GPLv3.
