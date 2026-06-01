@@ -27,8 +27,13 @@ export const containerClass = `container mx-auto bg-white border
   dark:border-gray-700 dark:text-gray-200 text-black`;
 
 // In use for the containers on the pages, adds the gray box around the website contents.
-export const containerPageClass = `container mx-auto bg-white border border-gray-300 
+// TODO Fix this to work with the dark mode toggle.
+export const containerPageClass = `container mx-auto bg-white border border-gray-300
 rounded-lg p-6 shadow-lg m-4 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-200`;
+
+// TODO Enable this once I fix dark mode toggle storage.
+// export const containerPageClass = `container mx-auto bg-white border border-gray-300
+// rounded-lg p-6 shadow-lg m-4 dark:bg-gray-700 bg-white`;
 
 // The div class that goes under the containerClass in the tsx.
 export const mainDivClass = `w-full max-w-3xl mx-auto overflow-x-hidden p-4`;

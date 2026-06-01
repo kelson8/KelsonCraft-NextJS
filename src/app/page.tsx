@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faServer} from "@fortawesome/free-solid-svg-icons";
 import {containerPageClass} from "@/util/constants";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 // Using this tutorial for learning more Next.js 16
 // https://youtu.be/I1V9YWqRIeI?t=1037
@@ -74,6 +75,7 @@ const Page = () => {
                            height={128}></Image>
                 </div>
             </MainContainer>
+            {/*<ThemeToggle />*/}
         </div>
 
     );

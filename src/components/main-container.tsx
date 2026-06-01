@@ -1,7 +1,8 @@
 import React from 'react';
 import { Footer } from '@/app/partials/footer';
 import NavbarPage from "@/app/partials/navbar";
-import {containerClass} from "@/util/constants";
+// import {containerClass} from "@/util/constants";
+import {ThemeToggle} from "@/components/theme-toggle";
 
 interface MainContainerProps {
     children: React.ReactNode;
@@ -21,6 +22,7 @@ export function MainContainer({children }: MainContainerProps) {
             </div>
 
             <Footer/>
+            <ThemeToggle />
         </>
     )
 }

@@ -4,11 +4,15 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 
 // app/layout.tsx
-import { ThemeModeScript } from 'flowbite-react';
+// import { ThemeModeScript } from 'flowbite-react';
 
 // import Font Awesome CSS
 // https://stackoverflow.com/questions/44752189/how-to-add-font-awesome-to-next-js-project
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import {Suspense} from "react";
+import {ThemeScript} from "@/components/theme-script";
+import {ThemeProvider} from "next-themes";
+import {theme} from "flowbite-react";
 // This doesn't seem to be needed.
 // import { config } from "@fortawesome/fontawesome-svg-core";
 
@@ -32,6 +36,28 @@ export const metadata: Metadata = {
   },
 
   description: "New and improved KelsonCraft website",
+
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+    other: [
+      {
+        rel: 'android-chrome-192x192',
+        url: '/android-chrome-192x192.png',
+        sizes: '192x192',
+      },
+      {
+        rel: 'android-chrome-512x512',
+        url: '/android-chrome-512x512.png',
+        sizes: '512x512',
+      },
+    ],
+  },
+
 };
 
 export default function RootLayout({
@@ -46,7 +72,35 @@ export default function RootLayout({
     >
 
 
-      <body className="min-h-full flex flex-col">{children}</body>
+      {/*<body className="min-h-full flex flex-col">{children}</body>*/}
+
+      {/* Placed suspense here
+      https://www.reddit.com/r/nextjs/comments/1fycva9/comment/mjwck8r/
+      This fixes the issues with docker. */}
+      <Suspense>
+
+        <head>
+          {/* Place the theme script directly in the head to run as early as possible */}
+          <ThemeScript />
+        </head>
+        {/*<Providers>*/}
+          <body
+              className={`${geistSans.variable} ${geistMono.variable} antialiased"`}>
+
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
+          </body>
+        {/*</Providers>*/}
+
+
+      </Suspense>
+
+
     </html>
   );
 }
