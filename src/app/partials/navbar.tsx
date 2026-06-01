@@ -3,6 +3,7 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
 import Image from 'next/image'
+import {blogUrl, wikiUrl} from "@/util/constants";
 
 // TODO Make text aligned to the left like it originally was.
 // TODO Cleanup this navbar and add the login/logout buttons.
@@ -108,9 +109,8 @@ export function NavbarPage() {
                     <li>
                         {NavbarLink("/", "Home")}
                         {NavbarLink("/about", "About")}
-                        {/* TODO Set these up later */}
-                        {/*{NavbarLink("/wiki", "Wiki")}*/}
-                        {/*{NavbarLink("/blog", "Blog")}*/}
+                        {NavbarLink(wikiUrl, "Wiki")}
+                        {NavbarLink(blogUrl, "Blog")}
                         {NavbarLink("/video-player", "Videos")}
                         {/*{NavbarLink("/projects", "Projects")}*/}
                     </li>
@@ -183,7 +183,10 @@ export function NavbarPage() {
                     <li>
                         {MobileNavbarLink("/", "Home")}
                         {MobileNavbarLink("/about", "About")}
+                        {MobileNavbarLink(wikiUrl, "Wiki")}
+                        {MobileNavbarLink(blogUrl, "Blog")}
                         {MobileNavbarLink("/video-player", "Videos")}
+                        {/*{MobileNavbarLink("/projects", "Projects")}*/}
 
                     </li>
 
