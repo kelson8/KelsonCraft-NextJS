@@ -15,9 +15,9 @@ export function MainContainer({children }: MainContainerProps) {
             <div className="p-4 sm:p-6 lg:p-8 dark:bg-gray-800 bg-white">
                 <br></br>
                 <br></br>
-                <div className={containerClass}>
+                {/*<div className={containerClass}>*/}
                     {children}
-                </div>
+                {/*</div>*/}
             </div>
 
             <Footer/>

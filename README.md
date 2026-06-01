@@ -12,6 +12,17 @@ Here is some screenshots of the website design, this isn't fully complete just y
 <img src="screenshots/website-home.png?raw=true" alt="Home Page Screenshot">
 </details>
 
+<details>
+<summary> About page </summary>
+<img src="screenshots/website-about1.png?raw=true" alt="About Page Screenshot1">
+<img src="screenshots/website-about2.png?raw=true" alt="About Page Screenshot2">
+</details>
+
+<details>
+<summary> Video list page </summary>
+<img src="screenshots/website-video-list.png?raw=true" alt="Home Page Screenshot">
+</details>
+
 # License
 Since this project will mostly be used on web servers, I have decided to license this
  under the AGPLv3 license, the original website was licensed under GPLv3.
