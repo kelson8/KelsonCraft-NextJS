@@ -10,6 +10,13 @@ export const videoPath: string = process.cwd() + "/videos";
 //------
 
 //------
+// Routes
+//------
+// Toggle the age encryption route status here
+export const ageEncryptionRouteEnabled = false;
+//------
+
+//------
 // Navbar urls
 //------
 export const blogUrl: string = "https://blog.kelsoncraft.net";
