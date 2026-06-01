@@ -24,6 +24,9 @@ Here is some screenshots of the website design, this isn't fully complete just y
 </details>
 
 # Setup
+
+**Running webserver**
+
 I tried to get this working with docker, but couldn't figure it out.
 
 You will need Node.js 24, pnpm, and pm2 installed for this to work
@@ -38,6 +41,11 @@ Then, run the server
 **Production server**
 * pnpm run build
 * pm2 start npm --name "kelsoncraft-nextjs" -- run start
+
+**Adding videos**
+
+To add videos for the `src/app/video-player/[videoId]/page.tsx`, add them into the 
+`videos` folder in the root of this repo.
 
 # License
 Since this project will mostly be used on web servers, I have decided to license this

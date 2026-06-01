@@ -36,7 +36,7 @@ export default function VideoPlayerPage({ params }: {
             <MainContainer>
                 <br></br>
                 {/* TODO Make this display the title of the video */}
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">React Player Test</h1>
+                <h1 className="text-4xl text-center text-indigo-500 text-bold">Video Player</h1>
                 <br></br>
 
                 <div
@@ -44,7 +44,8 @@ export default function VideoPlayerPage({ params }: {
                     {/* Play a video from the file specified in the params. */}
                     {/* This works! Now to make it work for other videos. */}
                     {/* TODO Setup the video title for this later. */}
-                    {VideoPlayer("Test Video", "/videos/" + videoId)}
+                    {/*{VideoPlayer("Test Video", "/videos/" + videoId)}*/}
+                    {VideoPlayer("Test Video", "/api/video/" + videoId)}
                     {/*{CustomVideoPlayer("/videos/" + videoId)}*/}
                 </div>
             </MainContainer>

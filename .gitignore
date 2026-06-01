@@ -3,6 +3,18 @@
 # Backup files
 backups/
 
+# Test pages, might commit later
+src/app/test
+src/app/test-pages.json
+src/components/custom-video-player.tsx
+
+src/components/search-test.tsx
+src/components/sidebar-test.tsx
+src/components/test-form.tsx
+
+# Incomplete auth pages
+src/app/(auth)
+
 # Audio/video
 *.mp3
 *.mp4

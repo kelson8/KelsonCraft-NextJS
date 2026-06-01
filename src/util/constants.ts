@@ -4,6 +4,12 @@ export const videoUrl: string = "/video-player";
 export const videosJsonFile = process.cwd() + "/src/app/videos.json";
 
 //------
+// Folders
+// The path for the videos in /api/video
+export const videoPath: string = process.cwd() + "/videos";
+//------
+
+//------
 // Navbar urls
 //------
 export const blogUrl: string = "https://blog.kelsoncraft.net";
