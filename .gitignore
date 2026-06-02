@@ -9,11 +9,9 @@ src/app/test-pages.json
 src/components/custom-video-player.tsx
 
 src/components/search-test.tsx
+src/components/get-user-info.tsx
 src/components/sidebar-test.tsx
 src/components/test-form.tsx
-
-# Incomplete auth pages
-src/app/(auth)
 
 # Other incomplete/test pages
 src/components/display-video-file.tsx

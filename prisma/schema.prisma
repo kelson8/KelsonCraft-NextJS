@@ -19,18 +19,12 @@ datasource db {
   provider = "sqlite"
 }
 
-
-// Adapted from users.sql.
 model User {
-  // TODO Possibly make this have a uuid instead of an ID
-  // id       String @id @default(uuid())
-  id       Int    @id @default(autoincrement())
-  username String @unique
-  email    String @unique
-  role     Role   @default(BASIC)
-  // password String @db.VarChar(100)
-  password String
-
+  id         Int      @id @default(autoincrement())
+  username   String   @unique
+  email      String   @unique
+  role       Role     @default(BASIC)
+  password   String
   // https://stackoverflow.com/questions/64535044/timestamp-with-timezone-column-in-prisma
   created_at DateTime @default(now())
   // Disabled these for now.

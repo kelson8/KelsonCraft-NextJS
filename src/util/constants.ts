@@ -2,6 +2,13 @@
 export const videoUrl: string = "/video-player";
 
 //------
+// Extra variables
+//------
+export const isProd = process.env.NODE_ENV === "production";
+
+export const authRoutesEnabled: boolean = process.env.AUTH_ROUTES === "true";
+
+//------
 // Website page json files
 //------
 // Set the website pages json files, these are currently located in the src/json folder.
@@ -74,7 +81,7 @@ export const blueLinkCss: string = "underline text-blue-600 hover:text-blue-800 
 // These might be used later
 // https://flowbite.com/docs/typography/headings/
 // Text for h1 headers.
-export const mainHeaderClass = `mb-4 text-4xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl`;
+export const mainHeaderClass = `mb-4 text-4xl text-center font-bold tracking-tight text-heading md:text-5xl lg:text-6xl`;
 // Smaller text for h2 headers
 export const h2HeaderClass = `mb-4 text-2xl font-bold tracking-tight text-heading md:text-4xl lg:text-4xl`;
 export const h3HeaderClass = `mb-4 text-2xl tracking-tight text-heading`;

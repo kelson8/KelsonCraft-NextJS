@@ -84,8 +84,8 @@ export async function ReadVideoJsonFile() {
     // I'm not sure why this doesn't work
     // https://nodejs.org/learn/asynchronous-work/discover-promises-in-nodejs
     // const videoInfo = await GetVideoInfo("tom_clancy_wildlands_glitch1", VideoEntryType.TITLE)
-    // await GetVideoInfo("tom_clancy_wildlands_glitch1", VideoEntryType.TITLE)
-    //     .then(result => console.log(result));
+    // // await GetVideoInfo("tom_clancy_wildlands_glitch1", VideoEntryType.TITLE)
+    // //     .then(result => console.log(result));
     // console.log(videoInfo);
 
     // This is a test for the new logger system.
@@ -159,9 +159,10 @@ export async function GetVideoInfo(videoId: string, videoEntryType: VideoEntryTy
 /**
  * Read a json file for the website page lists.
  * Display a list of pages from a json file with a title and description.
+ * @param webPage The web page subdirectory, such as '/misc
  * @param fileName The json file to read from.
  */
-export async function ReadWebpageJsonFile(fileName: string) {
+export async function ReadWebpageJsonFile(webPage: string, fileName: string) {
     const jsonData = await fsPromises.readFile(fileName, 'utf8');
     const data: Record<string, WebPageEntry> = JSON.parse(jsonData);
 
@@ -171,7 +172,7 @@ export async function ReadWebpageJsonFile(fileName: string) {
 
                 <ul className="list-disc"
                     key={id}>
-                    <li><Link className={blueLinkCss} href={`/misc/` + id}>{page.title} </Link>
+                    <li><Link className={blueLinkCss} href={webPage + '/' + id}>{page.title} </Link>
                         {/*<div>{page.description || <em>No description</em>}</div>*/}
                         {page.description}
                     </li>

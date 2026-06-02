@@ -3,10 +3,10 @@ import React from 'react'
 import {MainContainer} from "@/components/main-container";
 import Image from 'next/image'
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faServer} from "@fortawesome/free-solid-svg-icons";
-import {containerPageClass} from "@/util/constants";
-import { ThemeToggle } from "@/components/theme-toggle";
+import {authRoutesEnabled, containerPageClass, mainHeaderClass} from "@/util/constants";
+import {ThemeToggle} from "@/components/theme-toggle";
 
 // Using this tutorial for learning more Next.js 16
 // https://youtu.be/I1V9YWqRIeI?t=1037
@@ -43,12 +43,13 @@ const HomePage = () => {
             <MainContainer>
                 <br></br>
                 <h1 className="text-4xl text-center text-indigo-500 text-bold">Home Page
-                    <FontAwesomeIcon icon={faServer} className="fas fa-server" style={{ color: "whitesmoke" }}></FontAwesomeIcon></h1>
+                    <FontAwesomeIcon icon={faServer} className="fas fa-server"
+                                     style={{color: "whitesmoke"}}></FontAwesomeIcon></h1>
                 <br></br>
 
-                <HomePageContents />
+                <HomePageContents/>
 
-                <HomePageLogo />
+                <HomePageLogo/>
             </MainContainer>
         </div>
 
@@ -76,6 +77,12 @@ function HomePageContents() {
                     video playing and basic authentication, this should be ready for the public and to replace the
                     main website. </p>
 
+                <hr></hr>
+                <br></br>
+
+
+                <LoginPagesList />
+
                 {/*<CustomLink href="test.com" className="text-indigo-500">Test Link</CustomLink>*/}
 
             </div>
@@ -85,12 +92,33 @@ function HomePageContents() {
 
 function HomePageLogo() {
     return (
-            // KelsonCraft logo.
-            <div className="p-6 flex justify-center">
-                <Image src="/android-chrome-512x512.png" alt="KelsonCraft Logo 512x512" width={128}
-                       height={128}></Image>
-            </div>
+        // KelsonCraft logo.
+        <div className="p-6 flex justify-center">
+            <Image src="/android-chrome-512x512.png" alt="KelsonCraft Logo 512x512" width={128}
+                   height={128}></Image>
+        </div>
     )
+}
+
+/**
+ * List of login pages.
+ * This only works if the auth routes are enabled in the .env.
+ */
+function LoginPagesList() {
+    if(authRoutesEnabled) {
+        return (
+            <>
+                <h1 className={mainHeaderClass}>Test login pages</h1>
+                <p>These are currently disabled, I will work on them later.</p>
+
+
+                <ul className="list-disc">
+                    <li><a href="/login">/login</a></li>
+                    <li><a href="/register">/register</a></li>
+                </ul>
+            </>
+        )
+    }
 }
 
 export default HomePage;

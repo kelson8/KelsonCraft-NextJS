@@ -18,7 +18,7 @@ export default function DisplayPageList(pageHeader: string, pageDescription: str
             <div className={containerPageClass}>
                 <p className="text-center">{pageDescription}</p>
 
-                {ReadWebpageJsonFile(jsonFile)}
+                {ReadWebpageJsonFile('/misc', jsonFile)}
             </div>
         </>
     )

@@ -4,8 +4,8 @@
 @source "../../.flowbite-react/class-list.json";
 
 /* This fixes the light mode layouts */
-/* TODO Enable this once I fix dark mode toggle storage. */
-/*@custom-variant dark (&:where(.dark, .dark *));*/
+/* This just.. works now? I don't know what I changed. */
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* New content */
 
