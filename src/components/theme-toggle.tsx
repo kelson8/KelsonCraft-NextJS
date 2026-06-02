@@ -3,12 +3,12 @@
 import { FaMoon, FaSun } from "react-icons/fa";
 import {ThemeScript} from "@/components/theme-script";
 import {useTheme} from "next-themes";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
 // import cn from "@/util/class-merge";
 
-// TODO Fix this to store the state, I have it in the main-container.tsx.
+// TODO Fix the errors in this
 
 export function ThemeToggle() {
     // Initialize isDark to null or undefined
@@ -22,13 +22,31 @@ export function ThemeToggle() {
     // const [mounted, setMounted] = useState(false);
     //
 
-    // useEffect to synchronize 'isDark' state with the actual theme set by ThemeScript
-    // useEffect(() => {
-    //     if (typeof window !== 'undefined') {
-    //         const currentThemeIsDark = document.documentElement.classList.contains("dark");
-    //         setIsDark(currentThemeIsDark);
-    //     }
-    // }, []);
+    // const [theme, setThemeNew] = useState<'dark' | 'light'>(() => {
+    //     if (typeof window === 'undefined') return 'dark';
+    //     const stored = localStorage.getItem('theme') as 'dark' | 'light' | null;
+    //     if (stored) return stored;
+    //     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    // });
+
+
+    // useEffect to synchronize 'isDark' state with the actual theme set by the local storage.
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            // const currentThemeIsDark = document.documentElement.classList.contains("dark");
+            const currentTheme = localStorage.getItem('theme');
+
+            if(currentTheme === "light") {
+                setIsDark(false);
+                // setThemeNew("light");
+
+                // document.documentElement.classList.toggle('dark', theme === 'dark');
+            } else if (currentTheme === "dark") {
+                setIsDark(true);
+                // setThemeNew("dark")
+            }
+        }
+    }, []);
 
     //
     // https://sujalvanjare.vercel.app/blog/how-to-add-dark-mode-in-nextjs-16-with-tailwind-css-v4-typescript
@@ -72,41 +90,27 @@ export function ThemeToggle() {
     // }
 
     return (
-        <button
-            id="darkModeButton"
-            onClick={() =>
-                toggleTheme()
-                }
-            // className="px-4 py-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded-md transition-colors"
-            className="flex items-center bg-blue-500 px-4 py-2 text-white hover:bg-blue-400 rounded-full fixed bottom-2 right-2"
-        >
-            {/* This spans shows ONLY in light mode */}
-            <FaSun className="block dark:hidden"></FaSun>
-                {/*<span className="block dark:hidden">Switch to Dark Mode</span>*/}
+        <>
+            <button id="darkModeButton"
+                    // title={label}
+                    // aria-label={label}
+                    // aria-pressed={effectiveTheme === "dark"}
+                    className="flex items-center bg-blue-500 px-4 py-2 text-white hover:bg-blue-400 rounded-full fixed bottom-2 right-2"
+                    // disabled={!mounted}
+                    // onClick={toggleTheme}
+                    onClick={() => {
+                        // Toggle the state directly
+                        // setIsDark(prevIsDark => !prevIsDark);
+                        toggleTheme();
+                        // setTheme(prev => (prev === 'dark' ? 'light' : 'dark'))
+                    }}>
 
-            {/* This spans shows ONLY in dark mode */}
-            {/*<span className="hidden dark:block">Switch to Light Mode</span>*/}
-            <FaMoon className="block dark:block"></FaMoon>
-        </button>
+                {/*{theme === 'dark' ? <FaMoon className="mr-2" /> : <FaSun className="mr-2" />}*/}
 
-    // return (
-    //     <>
-    //         <button id="darkModeButton"
-    //                 // title={label}
-    //                 // aria-label={label}
-    //                 // aria-pressed={effectiveTheme === "dark"}
-    //                 className="flex items-center bg-blue-500 px-4 py-2 text-white hover:bg-blue-400 rounded-full fixed bottom-2 right-2"
-    //                 // disabled={!mounted}
-    //                 // onClick={toggleTheme}
-    //                 onClick={() => {
-    //                     // Toggle the state directly
-    //                     setIsDark(prevIsDark => !prevIsDark);
-    //                 }}>
-    //
-    //
-    //             {isDark ? <FaMoon className="mr-2" /> : <FaSun className="mr-2" />}
-    //             <span>{isDark ? "Dark" : "Light"}</span>
-    //         </button>
-    //     </>
+                {isDark ? <FaMoon className="mr-2" /> : <FaSun className="mr-2" />}
+                <span>{isDark ? "Dark" : "Light"}</span>
+                {/*<span>{theme === 'dark' ? "Dark" : "Light"}</span>*/}
+            </button>
+        </>
     )
 }
