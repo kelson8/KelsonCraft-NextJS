@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "generate:secret": "pnpm dlx auth secret",
-    "generate:test-user": "pnpm dlx tsx ./src/util/user-db.ts"
+    "generate:test-user": "pnpm dlx tsx ./src/util/user-db.ts",
+    "generate:prisma-db": "pnpm dlx prisma generate"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
