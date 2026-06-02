@@ -1,7 +1,12 @@
 // Set the videl url path, such as '/video-player'.
 export const videoUrl: string = "/video-player";
-// Set the videos.json file, this is currently located in the src/app folder.
-export const videosJsonFile = process.cwd() + "/src/app/videos.json";
+
+//------
+// Website page json files
+//------
+// Set the website pages json files, these are currently located in the src/json folder.
+export const videosJsonFile = process.cwd() + "/src/json/videos.json";
+export const miscPagesJsonFile = process.cwd() + "/src/json/misc_pages.json";
 
 //------
 // Folders
@@ -49,11 +54,11 @@ export const mainDivClass = `w-full max-w-3xl mx-auto overflow-x-hidden p-4`;
 // Buttons
 // https://v1.tailwindcss.com/components/buttons
 //------
-// export const blueButtonClass = `bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`;
-export const blueButtonClass = `text-white bg-brand box-border border border-transparent 
-hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium 
-shadow-xs font-medium leading-5 rounded-base 
-text-sm px-4 py-2.5 focus:outline-none m-4`;
+export const blueButtonClass = `bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`;
+// export const blueButtonClass = `text-white bg-brand box-border border border-transparent
+// hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium
+// shadow-xs font-medium leading-5 rounded-base
+// text-sm px-4 py-2.5 focus:outline-none m-4`;
 
 //------
 // Links

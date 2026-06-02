@@ -116,6 +116,8 @@ function NavbarContent() {
                             <li><MobileNavbarLink href={wikiUrl} title="Wiki" onClick={close}/></li>
                             <li><MobileNavbarLink href={blogUrl} title="Blog" onClick={close}/></li>
                             <li><MobileNavbarLink href="/video-player" title="Videos" onClick={close}/></li>
+                            {/*<li><MobileNavbarLink href="/projects" title="Projects" onClick={close}/></li>*/}
+                            <li><MobileNavbarLink href="/misc" title="Misc" onClick={close}/></li>
                         </ul>
                     </div>
 
@@ -196,6 +198,7 @@ function DesktopNavbarContent() {
 
                     {/*{DisplayTestPageOnNavbar()}*/}
                     {/*<NavbarLink href="/projects" title="Projects" />*/}
+                    <NavbarLink href="/misc" title="Misc"/>
                 </li>
             </ul>
 

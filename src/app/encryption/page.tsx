@@ -1,6 +1,6 @@
 import React from 'react'
 import {MainContainer} from "@/components/main-container";
-import {ReadVideoJson} from "@/components/read-video-json";
+import {ReadVideoJsonFile} from "@/components/read-json-files";
 import {containerPageClass} from "@/util/constants";
 import {Metadata} from "next";
 import AgeEncryption from "@/components/age-encryption";

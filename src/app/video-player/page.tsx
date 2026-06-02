@@ -1,7 +1,7 @@
 import React from 'react'
 import {MainContainer} from "@/components/main-container";
-import {ReadVideoJson} from "@/components/read-video-json";
-import {containerPageClass} from "@/util/constants";
+import {ReadVideoJsonFile} from "@/components/read-json-files";
+import {containerPageClass, videosJsonFile} from "@/util/constants";
 import {Metadata} from "next";
 
 // Video list page, this will play the videos from the videos.json.
@@ -13,23 +13,27 @@ export const metadata: Metadata = {
 }
 
 const VideoListPage = () => {
-
     return (
         <div>
             <MainContainer>
                 <br></br>
                 <h1 className="text-4xl text-center text-indigo-500 text-bold">Video list</h1>
                 <br></br>
-
-                <div
-                    className={containerPageClass}>
-                     {/*Display a list of files in the videos.json file.*/}
-                    <ReadVideoJson />
-                </div>
+                <VideoListPageContents/>
             </MainContainer>
         </div>
 
     );
+}
+
+function VideoListPageContents() {
+    return (
+        <div
+            className={containerPageClass}>
+            {/*Display a list of files in the videos.json file.*/}
+            <ReadVideoJsonFile/>
+        </div>
+    )
 }
 
 export default VideoListPage;
