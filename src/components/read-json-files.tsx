@@ -2,6 +2,11 @@
 import fsPromises from 'fs/promises';
 import {blueLinkCss, videosJsonFile, videoUrl} from "@/util/constants";
 import Link from "next/link";
+import {LogUserIp} from "@/util/log-user-ip";
+// import path from "path";
+// import fs from "fs";
+// import {logger} from "@/lib/logger";
+// import {headers} from "next/headers";
 // import {BlueLink} from "@/util/custom-link";
 
 // https://vercel.com/kb/guide/loading-static-file-nextjs-api-route
@@ -17,6 +22,13 @@ type VideoEntry = {
     description: string;
     file: string;
     restricted: boolean;
+}
+
+enum VideoEntryType {
+    TITLE = 0,
+    DESCRIPTION = 1,
+    FILE = 2,
+    RESTRICTED = 3,
 }
 
 type WebPageEntry = {
@@ -49,6 +61,7 @@ type WebPageEntry = {
 
 // console.log(search(data, 'white'));
 
+
 /**
  * Display a list of videos from the json file.
  * TODO Make this send the title to the video page metadata somehow
@@ -63,6 +76,22 @@ export async function ReadVideoJsonFile() {
     // TODO Figure out how to set the video title for the page metadata.
     // videoTitle = videoTitle;
 
+
+    // Test for getting the video info from the video id.
+    // await GetVideoInfo("tom_clancy_wildlands_glitch1", VideoEntryType.TITLE);
+    // const videoInfo = await GetVideoInfo("tom_clancy_wildlands_glitch1", VideoEntryType.TITLE);
+
+    // I'm not sure why this doesn't work
+    // https://nodejs.org/learn/asynchronous-work/discover-promises-in-nodejs
+    // const videoInfo = await GetVideoInfo("tom_clancy_wildlands_glitch1", VideoEntryType.TITLE)
+    // await GetVideoInfo("tom_clancy_wildlands_glitch1", VideoEntryType.TITLE)
+    //     .then(result => console.log(result));
+    // console.log(videoInfo);
+
+    // This is a test for the new logger system.
+    // await LogUserIp("/video-player")
+
+
     return (
         <div>
             {Object.entries(data).map(([id, v]) => (
@@ -70,7 +99,8 @@ export async function ReadVideoJsonFile() {
                     <strong>{v.title}</strong> {v.restricted && <span>(restricted)</span>}
                     <div>{v.description || <em>No description</em>}</div>
                     {/*<div>File: {v.file}</div>*/}
-                    <div>Video URL: <a className={blueLinkCss} href={videoUrl + "/" + v.file}>{videoUrl + "/" + v.file}</a>
+                    <div>Video URL: <a className={blueLinkCss}
+                                       href={videoUrl + "/" + v.file}>{videoUrl + "/" + v.file}</a>
                         {/* TODO Make this work, since it's a client component it doesn't work here. */}
                         {/*<div>Video URL: {BlueLink(videoUrl + "/" + v.file, videoUrl + "/" + id)}*/}
                     </div>
@@ -79,6 +109,51 @@ export async function ReadVideoJsonFile() {
             ))}
         </div>
     )
+}
+
+/**
+ /* Gets the video info, TODO Make this get a specific video entry, such as the title or description.
+ * @param videoId the video to search for by numbered id in the json.
+ * @param videoEntryType The type of the video entry to search for, such as VideoEntryType.TITLE for the video title.
+ */
+// export async function GetVideoInfo(videoEntry: VideoEntry) {
+export async function GetVideoInfo(videoId: string, videoEntryType: VideoEntryType): Promise<string> {
+    const jsonData = await fsPromises.readFile(videosJsonFile, 'utf8');
+    const data: Record<string, VideoEntry> = JSON.parse(jsonData);
+
+
+    // This works!!
+    // Well it works if this isn't set to return a string for some reason.
+    Object.entries(data).map(([id, v]) => {
+            if (id === videoId) {
+                // console.log(v.title);
+                // console.log(v.description);
+                switch (videoEntryType) {
+                    case VideoEntryType.TITLE:
+                        // console.log(v.title);
+                        return v.title;
+                    // break;
+                    case VideoEntryType.DESCRIPTION:
+                        // console.log(v.description);
+                        return v.description;
+                    // break;
+                    case VideoEntryType.FILE:
+                        // console.log(v.file);
+                        return v.file;
+                    // break;
+                    case VideoEntryType.RESTRICTED:
+                        // console.log(v.restricted);
+                        // return v.restricted;
+                        break;
+                }
+            }
+
+
+        }
+    )
+
+    return "";
+
 }
 
 /**
@@ -95,12 +170,12 @@ export async function ReadWebpageJsonFile(fileName: string) {
             {Object.entries(data).map(([id, page]) => (
 
                 <ul className="list-disc"
-                key={id}>
-                <li><Link className={blueLinkCss} href={`/misc/` + id}>{page.title} </Link>
-                    {/*<div>{page.description || <em>No description</em>}</div>*/}
-                    {page.description}
-                </li>
-            </ul>
+                    key={id}>
+                    <li><Link className={blueLinkCss} href={`/misc/` + id}>{page.title} </Link>
+                        {/*<div>{page.description || <em>No description</em>}</div>*/}
+                        {page.description}
+                    </li>
+                </ul>
             ))}
         </div>
 

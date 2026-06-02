@@ -1,7 +1,7 @@
 import React from 'react'
 import {MainContainer} from "@/components/main-container";
 import {ReadVideoJsonFile} from "@/components/read-json-files";
-import {containerPageClass, videosJsonFile} from "@/util/constants";
+import {containerPageClass} from "@/util/constants";
 import {Metadata} from "next";
 
 // Video list page, this will play the videos from the videos.json.
@@ -26,7 +26,7 @@ const VideoListPage = () => {
     );
 }
 
-function VideoListPageContents() {
+async function VideoListPageContents() {
     return (
         <div
             className={containerPageClass}>
