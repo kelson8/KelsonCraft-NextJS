@@ -1,0 +1,26 @@
+{
+  "form-test": {
+    "title": "Form test",
+    "description": "Form testing with NextJS"
+  },
+
+  "localstorage-test": {
+    "title": "Local Storage testing",
+    "description": "Local Storage testing with NextJS"
+  },
+
+  "search-test": {
+    "title": "Search testing",
+    "description": "Search bar testing with NextJS"
+  },
+
+  "sidebar-test": {
+    "title": "Sidebar testing with Flowbite CSS",
+    "description": "Sidebar testing, going to be messing around with this later."
+  },
+
+  "video-test": {
+    "title": "Video testing",
+    "description": "This isn't really in use."
+  }
+}

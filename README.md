@@ -72,12 +72,14 @@ it requires an id, title, description, file_name and if the video is restricted.
 
 From `videos.json`
 ```json
+{
   "tom_clancy_wildlands_glitch1": {
     "title": "Tom Clancy's Ghost Recon Wildlands Chopper glitch",
     "description": "I'm not sure how I would do this again, it just randomly happened one day.",
     "file": "tom_clancy_wildlands_glitch1.mp4",
     "restricted": false
-  },
+  }
+}
 ```
 
 Then, you can add the video into the `/videos` folder in the root of this repo.
