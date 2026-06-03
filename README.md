@@ -20,7 +20,13 @@ Here is some screenshots of the website design, this isn't fully complete just y
 
 <details>
 <summary> Video list page </summary>
-<img src="screenshots/website-video-list.png?raw=true" alt="Home Page Screenshot">
+<img src="screenshots/website-video-list.png?raw=true" alt="Video page list Screenshot">
+</details>
+
+<details>
+<summary> Dark mode toggle </summary>
+<img src="screenshots/dark-mode-toggle.gif?raw=true" alt="Video page list Screenshot">
+
 </details>
 
 # Setup
@@ -65,7 +71,7 @@ This folder contains the page JSON files which generate the page list to be disp
 on some of the pages, and also
 the `videos.json` which displays the videos using `src/components/read-json-files.tsx`.
 
-**Adding videos to the site**
+### Adding videos to the site
 
 To add videos to this site, first add them into the `src/json/videos.json` file like this
 it requires an id, title, description, file_name and if the video is restricted.
@@ -83,6 +89,33 @@ From `videos.json`
 ```
 
 Then, you can add the video into the `/videos` folder in the root of this repo.
+
+## Useful links
+
+These links below are useful for the website.
+
+| Title                         | URL                                                   |
+|-------------------------------|-------------------------------------------------------|
+| Font awesome icon list        | https://fontawesome.com/search?p=8&ic=free-collection |
+| MUI React checkboxes          | https://mui.com/material-ui/react-checkbox/           |
+| NextJS Form guides            | https://nextjs.org/docs/app/guides/forms              |
+| BetterAuth Installation Guide | https://better-auth.com/docs/installation             |
+
+### Website links
+
+I'm not sure how to set a relative path to these in the Markdown.
+
+| Title  | URL     | Description                                 |
+|--------|---------|---------------------------------------------|
+| About  | /about  | About page for the website.                 |
+| Misc   | /misc   | Misc pages for the website.                 |
+| Videos | /videos | Displays the video list from the json file. |
+
+# Features
+* Authentication system - This is not implemented yet and needs worked on.
+* Dark mode toggle - I have a dark mode toggle on the bottom right of the website.
+* Font awesome icons - This is what I use for some icons on this website.
+* Tailwind CSS - This website is using Tailwind CSS instead of Bootstrap like the old website was.
 
 # License
 Since this project will mostly be used on web servers, I have decided to license this

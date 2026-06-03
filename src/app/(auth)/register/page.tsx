@@ -23,22 +23,6 @@ export async function CreateUser(username: string, email: string, plainPassword:
     const userDb = new UserModel();
     const passwordHashing = new PasswordHash();
 
-    // TODO Make this check if the user exists first, or it'll cause errors.
-    // const user = await prisma.user.create({
-    // upsert checks if the item already exists in the DB.
-    // https://stackoverflow.com/questions/74345992/prisma-data-exists-or-not
-    // const user = await prisma.user.upsert({
-    //     where: {email: email},
-    //     update: {},
-    //
-    //     create: {
-    //         username: username,
-    //         email: email,
-    //         //     TODO HASH THIS!!
-    //         password: plainPassword,
-    //     }
-    // })
-
     // Make this only ever store a hashed password
     const hashedPassword = await passwordHashing.hashPassword(plainPassword);
     logger.debug("Stored hashed password: " + hashedPassword);

@@ -11,56 +11,6 @@ import { PasswordHash } from "@/util/password-hashing";
 
 // https://www.firdausng.com/posts/integrating-better-auth-better-sqlite3-drizzle-pnpm
 
-// async function SetupTestUser(username: string, email: string, plainPassword: string) {
-//     // Create a new user with a post
-//
-//     const user = prisma.user.upsert({
-//         where: {email: email},
-//         update: {},
-//
-//         create: {
-//
-//             // const user = await prisma.user.create({
-//             //     data: {
-//             username: username,
-//             email: email,
-//             // TODO Setup hashing, this is just a quick test.
-//             password: plainPassword
-//             // posts: {
-//             //     create: {
-//             //         title: "Hello World",
-//             //         content: "This is my first post!",
-//             //         published: true,
-//             //     },
-//             // },
-//             // },
-//             // include: {
-//             //     posts: true,
-//             // },
-//         }
-//     });
-//     console.log("Created user:", user);
-//
-//     // Get a specific user
-//     // const getCurrentUser = await (prisma.user.findFirst({
-//     //     where: {
-//     //         email: email,
-//     //     }
-//     // }))
-//     //
-//     // console.log(getCurrentUser);
-// }
-//
-// SetupTestUser("admin", "test@test.com", "testPassword1")
-//     .then(async () => {
-//         await prisma.$disconnect();
-//     })
-//     .catch(async (e) => {
-//         console.error(e);
-//         await prisma.$disconnect();
-//         process.exit(1);
-//     });
-
 //----
 // Taken from my internal KCNet-Vite project
 //----
@@ -100,7 +50,8 @@ export class UserModel {
         // Only ever store the hashed password.
         const hashedPassword = await hashPassword.hashPassword(password);
 
-        // const user = await prisma.user.create({
+        // upsert checks if the item already exists in the DB.
+        // https://stackoverflow.com/questions/74345992/prisma-data-exists-or-not
         const user = await prisma.user.upsert({
             where: {email: email},
             update: {},
@@ -114,10 +65,11 @@ export class UserModel {
                 },
         });
 
-        return user;
-
         // Log the user for debugging, disabled.
         // console.log(user);
+
+        return user;
+
     }
 
     /**

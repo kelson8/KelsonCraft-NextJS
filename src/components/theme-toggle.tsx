@@ -1,7 +1,6 @@
 "use client"
 // import { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
-import {ThemeScript} from "@/components/theme-script";
 import {useTheme} from "next-themes";
 import {useEffect, useState} from "react";
 

@@ -13,6 +13,7 @@ import {Suspense} from "react";
 // import {theme} from "flowbite-react";
 // import {cookies} from "next/headers";
 import NextThemeProvider from "@/app/provider";
+import {ThemeScript} from "@/components/theme-script";
 // import {LogUserIp} from "@/components/get-user-ip-server";
 // This doesn't seem to be needed.
 // import { config } from "@fortawesome/fontawesome-svg-core";
@@ -76,6 +77,10 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
 
+    {/* I guess I didn't have this working properly before. */}
+    <head>
+      <ThemeScript />
+    </head>
 
       {/*<body className="min-h-full flex flex-col">{children}</body>*/}
 
@@ -86,6 +91,7 @@ export default function RootLayout({
           <body
               className={`${geistSans.variable} ${geistMono.variable} antialiased"`}>
 
+          {/* This is breaking some of my pages like test/localstorage-test.tsx */}
           <NextThemeProvider>
             {children}
 

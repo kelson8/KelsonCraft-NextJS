@@ -2,16 +2,18 @@
 // so it's just a simple JS string directly injected.
 // It detects user preference from localStorage or system preference.
 
+// TODO Figure out how to use this, I'm quite sure I had it working locally on KCNet-Vite.
+
 export function ThemeScript() {
     const codeToRun = `
     (function() {
       const getInitialTheme = () => {
         // Check for 'darkmode' in localStorage first
-        const storedMode = localStorage.getItem('darkmode');
-        if (storedMode === 'enabled') {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark') {
           return 'dark';
         }
-        if (storedMode === 'disabled') {
+        if (storedTheme === 'light') {
           return 'light';
         }
 
@@ -33,6 +35,7 @@ export function ThemeScript() {
       }
     })();
   `;
+
 
     // We use dangerouslySetInnerHTML because this script must run synchronously
     // before React takes over.
