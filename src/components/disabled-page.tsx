@@ -3,7 +3,6 @@ import {containerPageClass} from "@/util/constants";
 
 /**
  * The disabled page, use this for any pages that are disabled with the .env.
- * @constructor
  */
 const DisabledPage = () => {
     return (

@@ -2,6 +2,8 @@ import React from 'react'
 import {MainContainer} from "@/components/main-container";
 import {blueLinkCss, containerPageClass} from "@/util/constants";
 import {Metadata} from "next";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircleInfo} from "@fortawesome/free-solid-svg-icons";
 
 // Video list page, this will play the videos from the videos.json.
 // This might be useful to look into later
@@ -27,7 +29,10 @@ const AboutPage = () => {
         <div>
             <MainContainer>
                 <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">Welcome to the about page</h1>
+                <h1 className="text-4xl text-center text-indigo-500 text-bold">About page
+                    <FontAwesomeIcon icon={faCircleInfo} />
+                </h1>
+
                 <br></br>
 
                 <div className={containerPageClass}>

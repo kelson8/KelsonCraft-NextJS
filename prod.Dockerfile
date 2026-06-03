@@ -14,6 +14,10 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
+# Generate the prisma DB.
+# TODO Copy this output into the runner.
+RUN pnpm run generate:prisma-db
+
 RUN pnpm build
 
 # Runner
@@ -24,14 +28,19 @@ WORKDIR /usr/src/app
 # Enable corepack/pnpm in runtime as well
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Create non-root user
-RUN groupadd -r app && useradd -r -g app app && mkdir -p /usr/src/app && chown -R app:app /usr/src/app
+#-----
+# Non root user
+# TODO Set this up
+#-----
 
-# Setup the corepack and .next folder for proper permissions
-RUN mkdir -p /home/app/.cache/node/corepack \
-    && chown -R app:app /home/app/.cache \
-    && mkdir -p /usr/src/app/.next \
-    && chown -R app:app /usr/src/app/.next
+# Create non-root user
+#RUN groupadd -r app && useradd -r -g app app && mkdir -p /usr/src/app && chown -R app:app /usr/src/app
+#
+## Setup the corepack and .next folder for proper permissions
+#RUN mkdir -p /home/app/.cache/node/corepack \
+#    && chown -R app:app /home/app/.cache \
+#    && mkdir -p /usr/src/app/.next \
+#    && chown -R app:app /usr/src/app/.next
 
 # Setup the .next folder permissions.
 # RUN mkdir -p /usr/src/app/.next && chown -R app:app /usr/src/app/.next
@@ -47,7 +56,7 @@ COPY --from=builder /usr/src/app/pnpm-lock.yaml* ./
 # Install only production dependencies
 RUN pnpm install --prod --frozen-lockfile
 
-RUN chown -R app:app /usr/src/app
+RUN #chown -R app:app /usr/src/app
 
 #USER app
 

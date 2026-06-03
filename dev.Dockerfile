@@ -13,18 +13,26 @@ RUN pnpm install
 
 COPY . .
 
+# Generate the prisma DB.
+RUN pnpm run generate:prisma-db
+
 EXPOSE 3000
 
+#-----
+# Non root user
+# TODO Set this up
+#-----
+
 # Use a non-root user
-RUN groupadd -r app && useradd -r -g app app && chown -R app:app /usr/src/app
+#RUN groupadd -r app && useradd -r -g app app && chown -R app:app /usr/src/app
+#
+## Setup the corepack and .next folder for proper permissions
+#RUN mkdir -p /home/app/.cache/node/corepack \
+#    && chown -R app:app /home/app/.cache \
+#    && mkdir -p /usr/src/app/.next \
+#    && chown -R app:app /usr/src/app/.next
 
-# Setup the corepack folder for proper permissions
-RUN mkdir -p /home/app/.cache/node/corepack && chown -R app:app /home/app/.cache
 
-# Setup the .next folder permissions.
-RUN mkdir -p /usr/src/app/.next && chown -R app:app /usr/src/app/.next
-
-# Disable this for now.
 #USER app
 
 CMD ["pnpm", "dev", "--hostname", "0.0.0.0"]

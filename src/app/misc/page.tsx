@@ -11,7 +11,13 @@ const MiscPage = () => {
     return (
         <div>
             <MainContainer>
-                {DisplayPageList("Misc", "Misc pages for this website", miscPagesJsonFile)}
+                {/* Display the list of pages for the misc pages from the JSON file. */}
+                {DisplayPageList("/misc", "Misc", "Misc pages for this website", miscPagesJsonFile)}
+
+                {/* TODO Try to fix this. */}
+                {/*{GetSessionStorage("theme")}*/}
+
+
             </MainContainer>
         </div>
     );

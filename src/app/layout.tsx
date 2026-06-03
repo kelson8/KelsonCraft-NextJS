@@ -10,9 +10,6 @@ import { cn } from "@/lib/utils";
 // https://stackoverflow.com/questions/44752189/how-to-add-font-awesome-to-next-js-project
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import {Suspense} from "react";
-// import {ThemeScript} from "@/components/theme-script";
-// https://github.com/shadcn-ui/ui/issues/10104
-// import { ThemeProvider } from "@wrksz/themes/next";
 // import {theme} from "flowbite-react";
 // import {cookies} from "next/headers";
 import NextThemeProvider from "@/app/provider";
@@ -86,30 +83,16 @@ export default function RootLayout({
       https://www.reddit.com/r/nextjs/comments/1fycva9/comment/mjwck8r/
       This fixes the issues with docker. */}
       <Suspense>
-
-        {/*<head>*/}
-          {/* Place the theme script directly in the head to run as early as possible */}
-          {/* No wonder this isn't working, I think it requires the client sided code anyways..*/}
-          {/*<ThemeScript />*/}
-        {/*</head>*/}
-        {/*<Providers>*/}
           <body
               className={`${geistSans.variable} ${geistMono.variable} antialiased"`}>
 
           <NextThemeProvider>
-          {/*<ThemeProvider*/}
-            {/*  attribute="class"*/}
-          {/*  defaultTheme="system"*/}
-          {/*  enableSystem*/}
-          {/*  disableTransitionOnChange>*/}
             {children}
 
             {/* This gives an error here */}
             {/*{LogUserIp("Website")}*/}
-          {/*</ThemeProvider>*/}
           </NextThemeProvider>
           </body>
-        {/*</Providers>*/}
 
 
       </Suspense>

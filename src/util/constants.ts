@@ -8,12 +8,15 @@ export const isProd = process.env.NODE_ENV === "production";
 
 export const authRoutesEnabled: boolean = process.env.AUTH_ROUTES === "true";
 
+export const testPagesEnabled: boolean = process.env.TEST_PAGES === "true";
+
 //------
 // Website page json files
 //------
 // Set the website pages json files, these are currently located in the src/json folder.
-export const videosJsonFile = process.cwd() + "/src/json/videos.json";
-export const miscPagesJsonFile = process.cwd() + "/src/json/misc_pages.json";
+export const testPagesJsonFile = process.cwd() + "/src/json/test-pages.json";
+export const miscPagesJsonFile = process.cwd() + "/src/json/misc-pages.json";
+export const videoPagesJsonFile = process.cwd() + "/src/json/videos.json";
 
 //------
 // Folders

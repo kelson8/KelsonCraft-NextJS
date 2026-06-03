@@ -1,6 +1,6 @@
 // import { promises as fs } from "fs";
 import fsPromises from 'fs/promises';
-import {blueLinkCss, videosJsonFile, videoUrl} from "@/util/constants";
+import {blueLinkCss, videoPagesJsonFile, videoUrl} from "@/util/constants";
 import Link from "next/link";
 import {LogUserIp} from "@/util/log-user-ip";
 // import path from "path";
@@ -69,7 +69,7 @@ type WebPageEntry = {
 // export async function ReadJsonFile(fileName: string): Promise<void> {
 export async function ReadVideoJsonFile() {
 
-    const jsonData = await fsPromises.readFile(videosJsonFile, 'utf8');
+    const jsonData = await fsPromises.readFile(videoPagesJsonFile, 'utf8');
     const data: Record<string, VideoEntry> = JSON.parse(jsonData);
 
 
@@ -118,7 +118,7 @@ export async function ReadVideoJsonFile() {
  */
 // export async function GetVideoInfo(videoEntry: VideoEntry) {
 export async function GetVideoInfo(videoId: string, videoEntryType: VideoEntryType): Promise<string> {
-    const jsonData = await fsPromises.readFile(videosJsonFile, 'utf8');
+    const jsonData = await fsPromises.readFile(videoPagesJsonFile, 'utf8');
     const data: Record<string, VideoEntry> = JSON.parse(jsonData);
 
 

@@ -4,6 +4,9 @@ import {authRoutesEnabled, containerPageClass} from "@/util/constants";
 
 import {UserModel, UserStat} from "@/util/user-db";
 import DisabledPage from "@/components/disabled-page";
+import {PasswordHash} from "@/util/password-hashing";
+import {hash} from "bcrypt-ts";
+import {logger} from "@/lib/logger";
 
 
 // TODO Setup a register page.
@@ -18,6 +21,7 @@ export async function CreateUser(username: string, email: string, plainPassword:
     // const posts = await prisma.user.findMany({username: ""});
 
     const userDb = new UserModel();
+    const passwordHashing = new PasswordHash();
 
     // TODO Make this check if the user exists first, or it'll cause errors.
     // const user = await prisma.user.create({
@@ -35,9 +39,16 @@ export async function CreateUser(username: string, email: string, plainPassword:
     //     }
     // })
 
-    const user = await userDb.CreateUserInDb(username, email, plainPassword);
+    // Make this only ever store a hashed password
+    const hashedPassword = await passwordHashing.hashPassword(plainPassword);
+    logger.debug("Stored hashed password: " + hashedPassword);
 
-    const currentUser = userDb.GetUserStat(username, UserStat.USERNAME);
+    // TODO Add password security such as a minimum character amount.
+    // if(plainPassword < ) {}
+
+    const user = await userDb.CreateUserInDb(username, email, hashedPassword);
+
+    const currentUser = await userDb.GetUserStat(username, UserStat.USERNAME);
 
     // const currentUser = await prisma.user.findFirst({
     //         where: {

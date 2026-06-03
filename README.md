@@ -47,6 +47,41 @@ Then, run the server
 To add videos for the `src/app/video-player/[videoId]/page.tsx`, add them into the 
 `videos` folder in the root of this repo.
 
+**Generating prisma schema**
+
+This below is required for the website to run now.
+
+To generate the prisma schema, run this command.
+* pnpm run generate:prisma-db
+
+To migrate the db (Sets up the sqlite DB)
+* pnpm dlx prisma migrate dev
+
+## Files
+The JSON files for some of the pages such as misc and video pages are located here.
+* `src/json`
+
+This folder contains the page JSON files which generate the page list to be displayed
+on some of the pages, and also
+the `videos.json` which displays the videos using `src/components/read-json-files.tsx`.
+
+**Adding videos to the site**
+
+To add videos to this site, first add them into the `src/json/videos.json` file like this
+it requires an id, title, description, file_name and if the video is restricted.
+
+From `videos.json`
+```json
+  "tom_clancy_wildlands_glitch1": {
+    "title": "Tom Clancy's Ghost Recon Wildlands Chopper glitch",
+    "description": "I'm not sure how I would do this again, it just randomly happened one day.",
+    "file": "tom_clancy_wildlands_glitch1.mp4",
+    "restricted": false
+  },
+```
+
+Then, you can add the video into the `/videos` folder in the root of this repo.
+
 # License
 Since this project will mostly be used on web servers, I have decided to license this
  under the AGPLv3 license, the original website was licensed under GPLv3.

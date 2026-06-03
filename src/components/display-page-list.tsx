@@ -4,11 +4,12 @@ import React from "react";
 
 /**
  * Basic function to display a website page list from my json files.
+ * @param pageHref The base url for the page, such as '/misc' or '/misc/test1'
  * @param pageHeader The header for the page.
  * @param pageDescription The description, shown under the header.
  * @param jsonFile The json file to load the page list info from.
  */
-export default function DisplayPageList(pageHeader: string, pageDescription: string, jsonFile: string) {
+export default function DisplayPageList(pageHref: string, pageHeader: string, pageDescription: string, jsonFile: string) {
     return (
         <>
             <br></br>
@@ -18,7 +19,7 @@ export default function DisplayPageList(pageHeader: string, pageDescription: str
             <div className={containerPageClass}>
                 <p className="text-center">{pageDescription}</p>
 
-                {ReadWebpageJsonFile('/misc', jsonFile)}
+                {ReadWebpageJsonFile(pageHref, jsonFile)}
             </div>
         </>
     )
