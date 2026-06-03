@@ -6,14 +6,11 @@ backups/
 *.old
 
 # Test pages, might commit later
-src/app/test
-src/json/test-pages.json
+#src/app/test
+src/app/test/video-test
 src/components/custom-video-player.tsx
 
-src/components/search-test.tsx
 src/components/get-user-info.tsx
-src/components/sidebar-test.tsx
-src/components/test-form.tsx
 
 # Other incomplete/test pages
 src/components/display-video-file.tsx
