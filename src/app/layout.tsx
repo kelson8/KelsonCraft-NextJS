@@ -95,7 +95,9 @@ export default function RootLayout({
           <NextThemeProvider>
             {children}
 
-            {/* This gives an error here */}
+            {/* What the hell, this just works now?
+            Well this only works on the first page load, not when a user goes to other pages.
+            */}
             {/*{LogUserIp("Website")}*/}
           </NextThemeProvider>
           </body>

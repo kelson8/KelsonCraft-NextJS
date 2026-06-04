@@ -1,6 +1,6 @@
 // https://github.com/vercel/next.js/discussions/55037
 
-// This works for getting the users on the server.
+// This works for getting the users IP on the server.
 // https://github.com/vercel/next.js/discussions/55037
 import {headers} from "next/headers";
 import {logger} from "@/lib/logger";
@@ -14,5 +14,12 @@ export async function LogUserIp(pageAccessed: string) {
     const ip = (header.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
 
     logger.info(pageAccessed + " accessed by: " + ip);
+
+    // Just make this return a blank tag for now, seems to get rid of the errors
+    return (
+        <>
+    {/*//         <p> pageAccessed accessed by: {ip} </p>*/}
+       </>
+    )
 }
 

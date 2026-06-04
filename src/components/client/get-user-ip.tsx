@@ -5,6 +5,8 @@ import cookies from "browser-cookies";
 
 // https://reacthustle.com/blog/nextjs-get-user-ip
 
+// Get the user IP on the client.
+
 export const GetUserIp = () => {
     const [ip, setUserIp] = useState<string>("");
 

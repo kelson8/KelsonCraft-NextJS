@@ -2,7 +2,7 @@
 import fsPromises from 'fs/promises';
 import {blueLinkCss, videoPagesJsonFile, videoUrl} from "@/util/constants";
 import Link from "next/link";
-import {LogUserIp} from "@/util/log-user-ip";
+// import {LogUserIp} from "@/util/log-user-ip";
 // import path from "path";
 // import fs from "fs";
 // import {logger} from "@/lib/logger";

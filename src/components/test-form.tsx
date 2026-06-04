@@ -2,45 +2,78 @@
 
 // import {useEffect, useState} from "react";
 
-import {FormEvent, useState} from "react";
+import {blueButtonClass} from "@/util/constants";
+
+const formInputBoxClass = `
+bg-neutral-secondary-medium border border-default-medium text-heading 
+text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 
+shadow-xs placeholder:text-body
+`
 
 /**
  * This is a test form with flowbite react, for now it is setup as a basic login form.
  * https://flowbite.com/docs/forms/input-field/
  */
 export function TestForm() {
+
+    // https://reacthustle.com/blog/nextjs-submit-form-to-api-using-formdata
+
     return (
-        <form>
+        <form method="POST" action="/api/register">
             {/*<div className="grid gap-6 mb-6 md:grid-cols-2">*/}
-                {/*<div>*/}
-                {/*    <label htmlFor="first_name" className="block mb-2.5 text-sm font-medium text-heading">First name</label>*/}
-                {/*    <input type="text" id="first_name" className="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="John" required />*/}
-                {/*</div>*/}
+            {/*<div>*/}
+            {/*    <label htmlFor="first_name" className="block mb-2.5 text-sm font-medium text-heading">First name</label>*/}
+            {/*    <input type="text" id="first_name" className={formInputBoxClass} placeholder="John" required />*/}
+            {/*</div>*/}
             {/*</div>*/}
             <div className="mb-6">
                 <label htmlFor="username" className="block mb-2.5 text-sm font-medium text-heading">Username</label>
-                <input type="username" id="username" className="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="john.doe@company.com" required />
+                <input type="username"
+                       name="username"
+                       id="username"
+                       className={formInputBoxClass}
+                       placeholder="username"
+                       required/>
             </div>
 
             <div className="mb-6">
                 <label htmlFor="email" className="block mb-2.5 text-sm font-medium text-heading">Email address</label>
-                <input type="email" id="email" className="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="john.doe@company.com" required />
+                <input type="email"
+                       name="email"
+                       id="email"
+                       className={formInputBoxClass}
+                       placeholder="john.doe@company.com"
+                       required/>
             </div>
-            {/*<div className="mb-6">*/}
-            {/*    <label htmlFor="password" className="block mb-2.5 text-sm font-medium text-heading">Password</label>*/}
-            {/*    <input type="password" id="password" className="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="•••••••••" required />*/}
-            {/*</div>*/}
-            {/*<div className="mb-6">*/}
-            {/*    <label htmlFor="confirm_password" className="block mb-2.5 text-sm font-medium text-heading">Confirm password</label>*/}
-            {/*    <input type="password" id="confirm_password" className="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="•••••••••" required />*/}
-            {/*</div>*/}
+            <div className="mb-6">
+                <label htmlFor="password"
+                       className="block mb-2.5 text-sm font-medium text-heading">Password</label>
+                <input type="password"
+                       name="password"
+                       id="password"
+                       className={formInputBoxClass}
+                       placeholder="•••••••••"
+                       required />
+            </div>
+            <div className="mb-6">
+                <label htmlFor="confirm_password" className="block mb-2.5 text-sm font-medium text-heading">Confirm password</label>
+                <input type="password"
+                       id="confirm_password"
+                       className={formInputBoxClass}
+                       placeholder="•••••••••"
+                       required />
+            </div>
             {/*<div className="flex items-start mb-6">*/}
             {/*    <div className="flex items-center h-5">*/}
             {/*        <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft" required />*/}
             {/*    </div>*/}
             {/*    <label htmlFor="remember" className="ms-2 text-sm font-medium text-heading">I agree with the <a href="#" className="text-fg-brand hover:underline">terms and conditions</a>.</label>*/}
             {/*</div>*/}
-            {/*<button type="submit" className="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>*/}
+            <button
+                type="submit"
+                className={blueButtonClass}>
+                Submit
+            </button>
         </form>
     )
 }

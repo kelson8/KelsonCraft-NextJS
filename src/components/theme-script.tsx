@@ -4,8 +4,7 @@
 
 // TODO Figure out how to use this, I'm quite sure I had it working locally on KCNet-Vite.
 
-export function ThemeScript() {
-    const codeToRun = `
+export const darkModeThemeScript = `
     (function() {
       const getInitialTheme = () => {
         // Check for 'darkmode' in localStorage first
@@ -34,10 +33,12 @@ export function ThemeScript() {
         document.documentElement.classList.remove('dark');
       }
     })();
-  `;
+`
 
+export function ThemeScript() {
+    // const codeToRun = darkModeThemeScript;
 
     // We use dangerouslySetInnerHTML because this script must run synchronously
     // before React takes over.
-    return <script dangerouslySetInnerHTML={{ __html: codeToRun }} />;
+    return <script dangerouslySetInnerHTML={{ __html: darkModeThemeScript }} />;
 }
