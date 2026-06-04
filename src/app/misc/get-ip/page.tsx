@@ -2,7 +2,7 @@
 
 import React from 'react'
 import {MainContainer} from "@/components/main-container";
-import {GetUserIp} from "@/components/get-user-ip";
+import {GetUserIp} from "@/components/client/get-user-ip";
 import {containerPageClass} from "@/util/constants";
 
 // https://stackoverflow.com/questions/68338838/how-to-get-the-ip-address-of-the-client-from-server-side-in-next-js-app
