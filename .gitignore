@@ -5,6 +5,8 @@ backups/
 *.bak
 *.old
 
+src/_api/
+
 # Test pages, might commit later
 #src/app/test
 src/app/test/video-test

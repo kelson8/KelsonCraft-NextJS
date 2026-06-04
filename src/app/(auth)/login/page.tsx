@@ -1,18 +1,17 @@
-"use client";
+// "use client";
 
-import React, {useState} from 'react'
+// import React, {useState} from 'react'
 import {MainContainer} from "@/components/main-container";
 import {authRoutesEnabled, containerPageClass} from "@/util/constants";
 import DisabledPage from "@/components/disabled-page";
 import {LoginForm} from "@/components/auth/login-form";
 import Link from "next/link";
-import {useRouter} from "next/router";
 
 // TODO Fix this to work properly.
 
 const LoginPage = () => {
-    const router = useRouter();
-    const [error, setError] = useState<string | null>(null);
+    // const router = useRouter();
+    // const [error, setError] = useState<string | null>(null);
 
     if(!authRoutesEnabled) {
         return (

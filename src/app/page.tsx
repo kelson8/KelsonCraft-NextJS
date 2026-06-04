@@ -5,8 +5,11 @@ import Image from 'next/image'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faServer} from "@fortawesome/free-solid-svg-icons";
-import {authRoutesEnabled, containerPageClass, mainHeaderClass} from "@/util/constants";
+import {authRoutesEnabled, blueLinkCss, containerPageClass, mainHeaderClass} from "@/util/constants";
 import {ThemeToggle} from "@/components/theme-toggle";
+import {auth} from "@/lib/auth";
+import {headers} from "next/headers";
+import Link from "next/link";
 
 // Using this tutorial for learning more Next.js 16
 // https://youtu.be/I1V9YWqRIeI?t=1037
@@ -81,13 +84,32 @@ function HomePageContents() {
                 <br></br>
 
 
-                <LoginPagesList />
+                <HomeLoginPages/>
+
 
                 {/*<CustomLink href="test.com" className="text-indigo-500">Test Link</CustomLink>*/}
 
             </div>
         </>
     )
+}
+
+async function HomeLoginPages() {
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+
+    if(session) {
+        return (
+            <LoginPagesList />
+        )
+    } else {
+        return (
+            <LoginPagesList />
+            )
+
+    }
+
 }
 
 function HomePageLogo() {
@@ -104,13 +126,25 @@ function HomePageLogo() {
  * List of login pages.
  * This only works if the auth routes are enabled in the .env.
  */
-function LoginPagesList() {
+async function LoginPagesList() {
     if(authRoutesEnabled) {
+        const session = await auth.api.getSession({
+            headers: await headers(),
+        });
+
+        if (session) {
+            return (
+                <>
+                    <p>You are logged in, redirect to the dashboard here</p>
+                    <Link href="/dashboard" className={blueLinkCss}>/dashboard</Link>
+                </>
+            )
+        }
+
+
         return (
             <>
-                <h1 className={mainHeaderClass}>Test login pages</h1>
-                <p>These are currently disabled, I will work on them later.</p>
-
+                <h1 className={mainHeaderClass}>Login pages</h1>
 
                 <ul className="list-disc">
                     <li><a href="/login">/login</a></li>

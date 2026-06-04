@@ -20,33 +20,65 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  username   String   @unique
-  email      String   @unique
-  role       Role     @default(BASIC)
-  password   String
-  // https://stackoverflow.com/questions/64535044/timestamp-with-timezone-column-in-prisma
-  created_at DateTime @default(now())
-  // Disabled these for now.
-  // time_zone   String
-  // time_format String
-  // Can index with email, mostly to search with it.
-  // @@index([email])
+  id            String    @id
+  name          String
+  email         String
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  accounts      Account[]
 
-  // Make the email and username need to be unique.
-  @@unique([email, username])
+  @@unique([email])
+  @@map("user")
 }
 
-// Role enum for user groups.
-enum Role {
-  BASIC
-  ADMIN
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@index([userId])
+  @@map("session")
 }
 
-// Video Favorites, not in use
-// model video_favorites {
-//   id         Int      @id @default(autoincrement())
-//   video_url  String   @unique
-//   video_name String
-//   created_at DateTime @default(now())
-// }
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}

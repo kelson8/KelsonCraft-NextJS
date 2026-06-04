@@ -9,15 +9,12 @@
     "lint": "eslint",
     "generate:secret": "pnpm dlx auth secret",
     "generate:test-user": "pnpm dlx tsx ./src/util/user-db.ts",
-    "generate:prisma-db": "pnpm dlx prisma generate"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "better-sqlite3"
-    ]
+    "migrate:prisma-db": "pnpm dlx prisma migrate dev",
+    "generate:prisma-db": "pnpm dlx prisma generate",
+    "generate:better-auth": "pnpm dlx auth@latest generate"
   },
   "dependencies": {
+    "@better-auth/kysely-adapter": "^1.6.14",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
@@ -26,7 +23,7 @@
     "@wrksz/themes": "^0.9.3",
     "age-encryption": "^0.3.0",
     "bcrypt-ts": "^8.0.1",
-    "better-auth": "^1.6.13",
+    "better-auth": "^1.6.11",
     "better-sqlite3": "^12.10.0",
     "browser-cookies": "^1.2.0",
     "class-variance-authority": "^0.7.1",
@@ -35,8 +32,10 @@
     "flowbite-react": "^0.12.17",
     "generate-password-in-client-side": "0.0.5-alpha",
     "jsonwebtoken": "^9.0.3",
+    "kysely": "^0.29.2",
     "lucide-react": "^1.17.0",
     "media-chrome": "^4.19.0",
+    "mediainfo.js": "^0.3.7",
     "next": "16.2.6",
     "next-themes": "^0.4.6",
     "pino": "^10.3.1",
@@ -68,5 +67,5 @@
     "tsx": "^4.22.4",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+  "packageManager": "pnpm@11.5.1"
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import {MainContainer} from "@/components/main-container";
 import {authRoutesEnabled, containerPageClass} from "@/util/constants";
 import DisabledPage from "@/components/disabled-page";
-import {RegisterForm} from "@/components/auth/register-form";
+import {BetterAuthRegister} from "@/components/auth/register-form";
 
 // https://www.reddit.com/r/nextjs/comments/1nuamlt/how_i_got_prisma_working_smoothly_in_nextjs_15/
 
@@ -23,7 +23,7 @@ const RegisterPage = () => {
                     <div
                         className={containerPageClass}>
 
-                        <RegisterForm />
+                        <BetterAuthRegister />
                     </div>
                 </MainContainer>
             </div>

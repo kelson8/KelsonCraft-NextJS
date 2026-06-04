@@ -1,4 +1,5 @@
 import {blueButtonClass} from "@/util/constants";
+import {SignInAction} from "@/app/actions/auth";
 
 // This is a test form with flowbite react, for now it is setup as a basic login form.
 //     https://flowbite.com/docs/forms/input-field/
@@ -24,7 +25,8 @@ export function LoginForm() {
     // https://reacthustle.com/blog/nextjs-submit-form-to-api-using-formdata
 
     return (
-        <form method="POST" action="/api/login">
+        // <form method="POST" action="/api/login">
+        <form action={SignInAction}>
             {/*<div className="grid gap-6 mb-6 md:grid-cols-2">*/}
             {/*<div>*/}
             {/*    <label htmlFor="first_name" className="block mb-2.5 text-sm font-medium text-heading">First name</label>*/}
@@ -34,8 +36,10 @@ export function LoginForm() {
             <div className="mb-6">
                 <label htmlFor="username"
                        className={formLabelClass}>Username</label>
-                <input type="username"
-                       name="username"
+                {/*<input type="username"*/}
+                <input type="text"
+                       // name="username"
+                       name="name"
                        id="username"
                        className={formInputBoxClass}
                        placeholder="username"
@@ -62,6 +66,7 @@ export function LoginForm() {
                        placeholder="•••••••••"
                        required />
             </div>
+            {/*</div>*/}
 
             {/* TODO Add a remember me button. */}
             {/*<div className="flex items-start mb-6">*/}
