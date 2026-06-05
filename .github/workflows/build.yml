@@ -39,4 +39,8 @@ jobs:
         run: pnpm run generate:prisma-db
 
       - name: Build Next.js app
+        # Setup for Better Auth
+        env:
+          BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+          BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}
         run: pnpm run build
