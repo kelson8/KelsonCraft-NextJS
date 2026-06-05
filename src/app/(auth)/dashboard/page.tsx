@@ -24,6 +24,7 @@ const DashboardPage = async () => {
 
     } else {
         // Page enabled, user not logged in
+        // Now this page always redirects to /login since I set it up in the proxy.ts, but I'll keep this here just in case.
         if (!session) {
             return (
                 <div>

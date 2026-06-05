@@ -86,12 +86,12 @@ shadow-xs placeholder:text-body
 
 
 
+// TODO Make this give an error if the name and email already exist.
 export function BetterAuthRegister() {
     return (
         <>
         <h1 className="text-2xl text-center">Sign up with Better Auth</h1>
-            {/*<form method="POST" action="/api/register">*/}
-            <form method="POST" action={SignupAction}>
+            <form action={SignupAction}>
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
                 {/*<div>*/}
                 {/*    <label htmlFor="first_name" className={formLabelClass}>First name</label>*/}

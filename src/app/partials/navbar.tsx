@@ -187,7 +187,6 @@ function DesktopNavbarContent() {
     // Desktop Navigation Links
     return (
         <>
-
             <ul className="hidden md:flex items-center space-x-6">
                 <li>
                     <NavbarLink href="/" title="Home"/>
@@ -199,8 +198,12 @@ function DesktopNavbarContent() {
                     {/*{DisplayTestPageOnNavbar()}*/}
                     {/*<NavbarLink href="/projects" title="Projects" />*/}
                     <NavbarLink href="/misc" title="Misc"/>
+
                 </li>
+
             </ul>
+
+
 
             <>
                 {/* <li>

@@ -25,5 +25,20 @@ export async function proxy(request: NextRequest) {
         });
     }
 
+    //----
+    // Better auth
+    //----
+    const token = request.cookies.get("better-auth.session_data");
+    const url = request.nextUrl.clone();
+
+    // protect /dashboard/*
+    // This auto redirects the dashboard to /login.
+    if (url.pathname.startsWith("/dashboard") && !token) {
+        url.pathname = "/login";
+        return NextResponse.redirect(url);
+    }
+
+    // More routes to protect with a login can be added below.
+
     return res;
 }

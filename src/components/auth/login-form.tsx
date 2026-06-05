@@ -1,5 +1,7 @@
 import {blueButtonClass} from "@/util/constants";
 import {SignInAction} from "@/app/actions/auth";
+import {auth} from "@/lib/auth";
+import {headers} from "next/headers";
 
 // This is a test form with flowbite react, for now it is setup as a basic login form.
 //     https://flowbite.com/docs/forms/input-field/
@@ -19,9 +21,9 @@ shadow-xs placeholder:text-body
 
 /**
  * Login form for the login pages.
+ * TODO Make this give an error when the incorrect username, email, or password is entered instead of a 500 error.
  */
-export function LoginForm() {
-
+export async function LoginForm() {
     // https://reacthustle.com/blog/nextjs-submit-form-to-api-using-formdata
 
     return (
@@ -33,18 +35,20 @@ export function LoginForm() {
             {/*    <input type="text" id="first_name" className={formInputBoxClass} placeholder="John" required />*/}
             {/*</div>*/}
             {/*</div>*/}
-            <div className="mb-6">
-                <label htmlFor="username"
-                       className={formLabelClass}>Username</label>
-                {/*<input type="username"*/}
-                <input type="text"
-                       // name="username"
-                       name="name"
-                       id="username"
-                       className={formInputBoxClass}
-                       placeholder="username"
-                       required/>
-            </div>
+
+            {/* Well, the username/name field isn't needed for logins. */}
+            {/*<div className="mb-6">*/}
+            {/*    <label htmlFor="username"*/}
+            {/*           className={formLabelClass}>Username</label>*/}
+            {/*    /!*<input type="username"*!/*/}
+            {/*    <input type="text"*/}
+            {/*           // name="username"*/}
+            {/*           name="name"*/}
+            {/*           id="username"*/}
+            {/*           className={formInputBoxClass}*/}
+            {/*           placeholder="username"*/}
+            {/*           required/>*/}
+            {/*</div>*/}
 
             <div className="mb-6">
                 <label htmlFor="email"

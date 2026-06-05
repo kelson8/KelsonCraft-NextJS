@@ -6,7 +6,6 @@ import Image from 'next/image'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faServer} from "@fortawesome/free-solid-svg-icons";
 import {authRoutesEnabled, blueLinkCss, containerPageClass, mainHeaderClass} from "@/util/constants";
-import {ThemeToggle} from "@/components/theme-toggle";
 import {auth} from "@/lib/auth";
 import {headers} from "next/headers";
 import Link from "next/link";
