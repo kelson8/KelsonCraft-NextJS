@@ -138,19 +138,21 @@ async function LoginPagesList() {
                     <Link href="/dashboard" className={blueLinkCss}>/dashboard</Link>
                 </>
             )
+        } else {
+            return (
+                <>
+                    <h1 className={mainHeaderClass}>Login pages</h1>
+
+                    <ul className="list-disc">
+                        <li><a href="/login">/login</a></li>
+                        <li><a href="/register">/register</a></li>
+                    </ul>
+                </>
+            )
         }
 
 
-        return (
-            <>
-                <h1 className={mainHeaderClass}>Login pages</h1>
 
-                <ul className="list-disc">
-                    <li><a href="/login">/login</a></li>
-                    <li><a href="/register">/register</a></li>
-                </ul>
-            </>
-        )
     }
 }
 
