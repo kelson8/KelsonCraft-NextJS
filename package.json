@@ -11,7 +11,8 @@
     "generate:test-user": "pnpm dlx tsx ./src/util/user-db.ts",
     "migrate:prisma-db": "pnpm dlx prisma migrate dev",
     "generate:prisma-db": "pnpm dlx prisma generate",
-    "generate:better-auth": "pnpm dlx auth@latest generate"
+    "generate:better-auth": "pnpm dlx auth@latest generate",
+    "init:shadcn": "pnpm dlx shadcn@latest init -b radix --no-reinstall --template=next --preset=nova"
   },
   "dependencies": {
     "@better-auth/kysely-adapter": "^1.6.14",
@@ -19,6 +20,8 @@
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
+    "@hugeicons/core-free-icons": "^4.2.0",
+    "@hugeicons/react": "^1.1.6",
     "@prisma/adapter-better-sqlite3": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "@radix-ui/themes": "^3.3.0",
@@ -40,6 +43,7 @@
     "lucide-react": "^1.17.0",
     "media-chrome": "^4.19.0",
     "mediainfo.js": "^0.3.7",
+    "mime-types": "^3.0.2",
     "next": "16.2.6",
     "next-themes": "^0.4.6",
     "pino": "^10.3.1",
@@ -51,6 +55,8 @@
     "react-icons": "^5.6.0",
     "react-player": "^3.4.0",
     "request-ip": "^3.3.0",
+    "shadcn": "^4.10.0",
+    "ssh2-sftp-client": "^12.1.1",
     "tailwind-merge": "^3.6.0",
     "tw-animate-css": "^1.4.0",
     "zod": "^4.4.3"
@@ -60,10 +66,12 @@
     "@tailwindcss/postcss": "^4",
     "@types/better-sqlite3": "^7.6.13",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/mime-types": "^3.0.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/request-ip": "^0.0.41",
+    "@types/ssh2-sftp-client": "^9.0.6",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "prettier": "3.8.3",

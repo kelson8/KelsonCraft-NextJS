@@ -2,7 +2,10 @@ allowBuilds:
   '@prisma/engines': false
   better-sqlite3: true
   core-js: false
+  cpu-features: true
   esbuild: true
+  msw: true
   prisma: false
   sharp: false
+  ssh2: true
   unrs-resolver: false

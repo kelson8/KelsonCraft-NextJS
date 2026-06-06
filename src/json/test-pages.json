@@ -22,5 +22,9 @@
   "video-test": {
     "title": "Video testing",
     "description": "This isn't really in use."
+  },
+  "shadcn-test": {
+    "title": "Shadcn UI testing",
+    "description": "Test with Shadcn ui for Tailwind utility classes.."
   }
 }

@@ -1,3 +1,6 @@
+// Get the current year, mostly for the copyright date and isn't exported.
+const currentYear = new Date().getFullYear();
+
 // Set the videl url path, such as '/video-player'.
 export const videoUrl: string = "/video-player";
 
@@ -22,6 +25,8 @@ export const videoPagesJsonFile = process.cwd() + "/src/json/videos.json";
 // Folders
 // The path for the videos in /api/video
 export const videoPath: string = process.cwd() + "/videos";
+// Well this almost works for my youtube-dl folders, It works on the files in the root of this folder but sub folders don't work.
+// export const videoPath: string = "Z:/youtube-dl";
 //------
 
 //------
@@ -37,6 +42,13 @@ export const ageEncryptionRouteEnabled = false;
 export const blogUrl: string = "https://blog.kelsoncraft.net";
 export const wikiUrl: string = "https://wiki.kelsoncraft.net";
 //------
+
+//------
+// Footer urls and info
+//------
+export const websiteAuthor: string = "kelson8";
+export const websiteCopyrightInfo: string = `© Copyright ${currentYear} ${websiteAuthor} - KCNet/KelsonCraft AGPLv3`
+export const websiteSourceUrl: string = "https://github.com/kelson8/KelsonCraft-NextJS";
 
 //------
 // Main containers and div classes
@@ -75,7 +87,8 @@ export const blueButtonClass = `bg-blue-500 hover:bg-blue-700 text-white font-bo
 //------
 export const blueLinkCss: string = "underline text-blue-600 hover:text-blue-800 visited:text-purple-600";
 
-
+// This will mostly be used for the footer links to center them.
+export const footerLinkCss: string = blueLinkCss + " flex items-center justify-center";
 
 //------
 // Headers
@@ -88,4 +101,3 @@ export const mainHeaderClass = `mb-4 text-4xl text-center font-bold tracking-tig
 // Smaller text for h2 headers
 export const h2HeaderClass = `mb-4 text-2xl font-bold tracking-tight text-heading md:text-4xl lg:text-4xl`;
 export const h3HeaderClass = `mb-4 text-2xl tracking-tight text-heading`;
-

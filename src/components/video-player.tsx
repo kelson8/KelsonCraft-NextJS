@@ -50,6 +50,9 @@ const VideoPlayer = (videoTitle: string, videoFile: string) => {
                         light={false}
                         // picture in picture
                         pip={true}
+                        // Set the volume to be low by default
+                        // TODO make this store the user preference with a cookie or local storage.
+                        volume={0.3}
                     />
             </div>
         </div>

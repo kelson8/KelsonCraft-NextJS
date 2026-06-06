@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Figtree } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +18,12 @@ import {ThemeScript} from "@/components/theme-script";
 // This doesn't seem to be needed.
 // import { config } from "@fortawesome/fontawesome-svg-core";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+// Radix CSS
+// https://www.radix-ui.com/themes/docs/overview/getting-started
+// import "@radix-ui/themes/styles.css";
+// import {Theme} from "@radix-ui/themes";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -74,10 +79,12 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", geist.variable)}
     >
 
     {/* I guess I didn't have this working properly before. */}
+    {/* This seems to break a few things for the site.
+     Also, I need to switch from next-themes to Radix or something else.*/}
     <head>
       <ThemeScript />
     </head>
@@ -93,6 +100,8 @@ export default function RootLayout({
 
           {/* This is breaking some of my pages like test/localstorage-test.tsx */}
           <NextThemeProvider>
+          {/* Well, this breaks my dark mode button, so I'll have to figure that out. */}
+          {/*<Theme>*/}
             {children}
 
             {/* What the hell, this just works now?
@@ -100,6 +109,7 @@ export default function RootLayout({
             */}
             {/*{LogUserIp("Website")}*/}
           </NextThemeProvider>
+          {/*</Theme>*/}
           </body>
 
 
