@@ -6,7 +6,7 @@ import {GenerateRandomPassword} from "@/util/password-generator";
 
 // import {Button, Checkbox, Label, TextInput} from "flowbite-react";
 
-import { generatePassword } from 'generate-password-in-client-side';
+// import { generatePassword } from 'generate-password-in-client-side';
 
 // Password generator testing.
 

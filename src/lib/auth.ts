@@ -5,9 +5,9 @@ import {nextCookies} from "better-auth/next-js"; // your drizzle instance
 
 // import { rateLimiter } from "better-auth-rate-limiter";
 
-import { captcha } from "better-auth/plugins";
+// import { captcha } from "better-auth/plugins";
 
-import { haveIBeenPwned } from "better-auth/plugins"
+// import { haveIBeenPwned } from "better-auth/plugins"
 import Redis from "ioredis";
 import {redisStorage} from "@better-auth/redis-storage";
 import {dockerContainerName, dockerEnabled} from "@/util/constants";

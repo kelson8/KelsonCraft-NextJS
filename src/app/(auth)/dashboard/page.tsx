@@ -1,6 +1,6 @@
 import React from 'react'
 import {MainContainer} from "@/components/main-container";
-import {authRoutesEnabled, blueButtonClass, blueLinkCss, containerPageClass, mainHeaderClass} from "@/util/constants";
+import {authRoutesEnabled, blueButtonClass, containerPageClass, mainHeaderClass} from "@/util/constants";
 import DisabledPage from "@/components/disabled-page";
 import {auth} from "@/lib/auth";
 import {headers} from "next/headers";
@@ -58,6 +58,10 @@ const DashboardPage = async () => {
                             <p> User ID: {session.user.id}</p>
                             <p> User Email: {session.user.email}</p>
                             <p> User Name: {session.user.name}</p>
+
+                            <p> User created on: {session.user.createdAt.toString()}</p>
+
+                            <br></br>
 
                             <form action={SignoutAction}>
                                 <button type="submit" className={blueButtonClass}>Sign Out</button>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {MainContainer} from "@/components/main-container";
 import {containerPageClass, testPagesEnabled} from "@/util/constants";
-import {TestForm} from "@/components/test-form";
+// import {TestForm} from "@/components/test-form";
 import DisabledPage from "@/components/disabled-page";
 
 // Form testing page with Flowbite

@@ -9,6 +9,7 @@ import {authRoutesEnabled, blueLinkCss, containerPageClass, mainHeaderClass} fro
 import {auth} from "@/lib/auth";
 import {headers} from "next/headers";
 import Link from "next/link";
+// import {logger} from "@/lib/logger";
 
 // Using this tutorial for learning more Next.js 16
 // https://youtu.be/I1V9YWqRIeI?t=1037
@@ -127,11 +128,17 @@ function HomePageLogo() {
  */
 async function LoginPagesList() {
     if(authRoutesEnabled) {
+
+        // TODO Make this clear the session if the cache is invalid.
+        // I think that is why this will still say the user is still logged in.
         const session = await auth.api.getSession({
             headers: await headers(),
         });
 
         if (session) {
+            // logger.debug(session);
+            // console.log(session);
+
             return (
                 <>
                     <p>You are logged in, redirect to the dashboard here</p>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Figtree } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,8 @@ import {Suspense} from "react";
 // import {cookies} from "next/headers";
 import NextThemeProvider from "@/app/provider";
 import {ThemeScript} from "@/components/theme-script";
+import {CookiesProvider} from "next-client-cookies/server";
+import {LogUserIp} from "@/components/server/log-user-ip";
 // import {LogUserIp} from "@/components/get-user-ip-server";
 // This doesn't seem to be needed.
 // import { config } from "@fortawesome/fontawesome-svg-core";
@@ -102,12 +104,16 @@ export default function RootLayout({
           <NextThemeProvider>
           {/* Well, this breaks my dark mode button, so I'll have to figure that out. */}
           {/*<Theme>*/}
+
+            {/* For next-client-cookies */}
+            <CookiesProvider>
             {children}
+            </CookiesProvider>
 
             {/* What the hell, this just works now?
             Well this only works on the first page load, not when a user goes to other pages.
             */}
-            {/*{LogUserIp("Website")}*/}
+            {LogUserIp("Website")}
           </NextThemeProvider>
           {/*</Theme>*/}
           </body>

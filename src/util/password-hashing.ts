@@ -1,7 +1,8 @@
 
 // https://www.npmjs.com/package/bcrypt-ts
-import { genSaltSync, hashSync, compare, compareSync, hash, getSalt, genSalt } from 'bcrypt-ts';
-import {isProd} from "@/util/constants";
+// import { genSaltSync, hashSync, compare, compareSync, hash, getSalt, genSalt } from 'bcrypt-ts';
+import { compare, hash, genSalt } from 'bcrypt-ts';
+// import {isProd} from "@/util/constants";
 // import { isProd, testPassword } from '../config.js';
 
 // https://github.com/pauldenver/generate-api-key
