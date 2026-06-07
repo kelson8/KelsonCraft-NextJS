@@ -60,34 +60,30 @@ const HomePage = () => {
 function HomePageContents() {
     return (
         <>
-            <div
-                className={containerPageClass}>
+            <p>Welcome to the new KelsonCraft website, this website is
+                going
+                to be using
+                NextJS with Typescript and Tailwind CSS. The old one was using Python Flask and Bootstrap
+                CSS.</p>
+            <br></br>
 
-                <p>Welcome to the new KelsonCraft website, this website is
-                    going
-                    to be using
-                    NextJS with Typescript and Tailwind CSS. The old one was using Python Flask and Bootstrap
-                    CSS.</p>
-                <br></br>
+            <p> I&#39;ve started working on this new website on May 29, 2026 and plan to have it up and running
+                soon. <br></br>
+                Once I figure out how to replicate everything I was doing on the old website, which isn&#39;t
+                much
+                and is mostly just
+                video playing and basic authentication, this should be ready for the public and to replace the
+                main website. </p>
 
-                <p> I&#39;ve started working on this new website on May 29, 2026 and plan to have it up and running
-                    soon. <br></br>
-                    Once I figure out how to replicate everything I was doing on the old website, which isn&#39;t
-                    much
-                    and is mostly just
-                    video playing and basic authentication, this should be ready for the public and to replace the
-                    main website. </p>
-
-                <hr></hr>
-                <br></br>
+            <hr></hr>
+            <br></br>
+            <br></br>
 
 
-                <HomeLoginPages/>
+            <HomeLoginPages/>
 
 
-                {/*<CustomLink href="test.com" className="text-indigo-500">Test Link</CustomLink>*/}
-
-            </div>
+            {/*<CustomLink href="test.com" className="text-indigo-500">Test Link</CustomLink>*/}
         </>
     )
 }
@@ -97,14 +93,14 @@ async function HomeLoginPages() {
         headers: await headers(),
     });
 
-    if(session) {
+    if (session) {
         return (
-            <LoginPagesList />
+            <LoginPagesList/>
         )
     } else {
         return (
-            <LoginPagesList />
-            )
+            <LoginPagesList/>
+        )
 
     }
 
@@ -125,7 +121,7 @@ function HomePageLogo() {
  * This only works if the auth routes are enabled in the .env.
  */
 async function LoginPagesList() {
-    if(authRoutesEnabled) {
+    if (authRoutesEnabled) {
 
         // TODO Make this clear the session if the cache is invalid.
         // I think that is why this will still say the user is still logged in.
@@ -155,7 +151,6 @@ async function LoginPagesList() {
                 </>
             )
         }
-
 
 
     }

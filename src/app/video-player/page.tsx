@@ -25,11 +25,10 @@ const VideoListPage = () => {
 
 async function VideoListPageContents() {
     return (
-        <div
-            className={containerPageClass}>
+        <>
             {/*Display a list of files in the videos.json file.*/}
             <ReadVideoJsonFile/>
-        </div>
+        </>
     )
 }
 

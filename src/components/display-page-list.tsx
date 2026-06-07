@@ -16,11 +16,12 @@ export default function DisplayPageList(pageHref: string, pageHeader: string, pa
             <h1 className="text-4xl text-center text-indigo-500 text-bold">{pageHeader}</h1>
             <br></br>
 
-            <div className={containerPageClass}>
-                <p className="text-center">{pageDescription}</p>
+            {/*<div className={containerPageClass}>*/}
+                <p className="text-center p-6">{pageDescription}</p>
 
                 {ReadWebpageJsonFile(pageHref, jsonFile)}
-            </div>
+            {/*</div>*/}
         </>
+
     )
 }
