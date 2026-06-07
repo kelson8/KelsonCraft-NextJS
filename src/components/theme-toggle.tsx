@@ -1,33 +1,105 @@
 "use client"
 // import { useEffect, useState } from "react";
-import { FaMoon, FaSun } from "react-icons/fa";
+import {FaMoon, FaSun} from "react-icons/fa";
 import {useTheme} from "next-themes";
 import {useEffect, useState} from "react";
 
+import * as React from "react"
+import {Moon, Sun} from "lucide-react"
+
+import {Button} from "@/components/ui/button"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 // import cn from "@/util/class-merge";
 
 // TODO Fix the errors in this
 
+/**
+ * Theme toggle with Shadcn
+ * https://ui.shadcn.com/docs/dark-mode/next
+ * TODO Make this look like the old button.
+ */
 export function ThemeToggle() {
-    // Initialize isDark to null or undefined
-    // It will be set in useEffect after document.documentElement.classList is ready.
+    return (
+        <>
+            <DarkModeToggleShadcn/>
+
+            {/*<DarkModeToggleButton />*/}
+
+            {/* I made a get theme function. */}
+            {/*<p>Your current theme: {GetCurrentTheme()}</p>*/}
+        </>
+    )
+}
+
+function DarkModeToggleShadcn() {
+    const {setTheme} = useTheme();
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button
+                    className="flex items-center bg-blue-500 px-4 py-2 text-white hover:bg-blue-400 rounded-full fixed bottom-2 right-2"
+                    variant="outline" size="icon">
+                    <Sun
+                        className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"/>
+                    <Moon
+                        className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"/>
+                    <span className="sr-only">Toggle theme</span>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => setTheme("light")}>
+                    Light
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("dark")}>
+                    Dark
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("system")}>
+                    System
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+    )
+}
+
+/**
+ * This displays the current theme.
+ */
+function GetCurrentTheme() {
+    const [isClient, setIsClient] = useState(false)
+
+    useEffect(() => {
+        setIsClient(true);
+    }, [])
+
+    const {theme} = useTheme();
+
+    // return theme;
+
+    // This fixes the hydration error
+    return (
+        <>
+            {isClient ? theme : ""}
+        </>
+
+    )
+}
+
+/**
+ * Dark mode toggle button without shadcn
+ */
+function DarkModeToggleButton() {
+    //     // Initialize isDark to null or undefined
+//     // It will be set in useEffect after document.documentElement.classList is ready.
     const [isDark, setIsDark] = useState<boolean | undefined>(undefined);
 
-    //
-    // const { theme, resolvedTheme, setTheme } = useTheme();
     // https://dev.to/mr_tux/how-to-implement-darklight-mode-with-no-flickers-in-nextjs-1blj
     const { resolvedTheme, setTheme } = useTheme();
-    // const [mounted, setMounted] = useState(false);
-    //
-
-    // const [theme, setThemeNew] = useState<'dark' | 'light'>(() => {
-    //     if (typeof window === 'undefined') return 'dark';
-    //     const stored = localStorage.getItem('theme') as 'dark' | 'light' | null;
-    //     if (stored) return stored;
-    //     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    // });
-
 
     // useEffect to synchronize 'isDark' state with the actual theme set by the local storage.
     useEffect(() => {
@@ -47,69 +119,31 @@ export function ThemeToggle() {
         }
     }, []);
 
-    //
-    // https://sujalvanjare.vercel.app/blog/how-to-add-dark-mode-in-nextjs-16-with-tailwind-css-v4-typescript
-    // Only compute theme after mount
-    // const effectiveTheme =
-    //     mounted && theme === "system" && resolvedTheme
-    //         ? resolvedTheme
-    //         : mounted
-    //             ? theme
-    //             : null;
-
-    // const nextTheme = effectiveTheme === "dark" ? "light" : "dark";
-    //
-    // const label = effectiveTheme ? `Switch to ${nextTheme} mode` : "Toggle theme";
-    //
-    // const toggleTheme = () => {
-    //     if (!mounted || !nextTheme) return;
-    //     setTheme(nextTheme);
-    // };
-    //
-
     const toggleTheme = () => {
         setIsDark(resolvedTheme !== "dark");
         setTheme(resolvedTheme === "dark" ? "light" : "dark");
     }
 
-    // useEffect(() => {
-    //     if (typeof window !== 'undefined' && isDark !== undefined) {
-    //         if (isDark) {
-    //             document.documentElement.classList.add("dark");
-    //             localStorage.setItem('darkmode', 'enabled');
-    //         } else {
-    //             document.documentElement.classList.remove("dark");
-    //             localStorage.setItem('darkmode', 'disabled');
-    //         }
-    //     }
-    // }, [isDark]);
-    //
-    // if (isDark === undefined) {
-    //     return null;
-    // }
-
     return (
-        <>
-            <button id="darkModeButton"
-                    // title={label}
-                    // aria-label={label}
-                    // aria-pressed={effectiveTheme === "dark"}
-                    className="flex items-center bg-blue-500 px-4 py-2 text-white hover:bg-blue-400 rounded-full fixed bottom-2 right-2"
-                    // disabled={!mounted}
-                    // onClick={toggleTheme}
-                    onClick={() => {
-                        // Toggle the state directly
-                        // setIsDark(prevIsDark => !prevIsDark);
-                        toggleTheme();
-                        // setTheme(prev => (prev === 'dark' ? 'light' : 'dark'))
-                    }}>
+        <button id="darkModeButton"
+            // title={label}
+            // aria-label={label}
+            // aria-pressed={effectiveTheme === "dark"}
+                className="flex items-center bg-blue-500 px-4 py-2 text-white hover:bg-blue-400 rounded-full fixed bottom-2 right-2"
+            // disabled={!mounted}
+            // onClick={toggleTheme}
+                onClick={() => {
+                    // Toggle the state directly
+                    // setIsDark(prevIsDark => !prevIsDark);
+                    toggleTheme();
+                }}>
 
-                {/*{theme === 'dark' ? <FaMoon className="mr-2" /> : <FaSun className="mr-2" />}*/}
+            {/*{theme === 'dark' ? <FaMoon className="mr-2" /> : <FaSun className="mr-2" />}*/}
 
-                {isDark ? <FaMoon className="mr-2" /> : <FaSun className="mr-2" />}
-                <span>{isDark ? "Dark" : "Light"}</span>
-                {/*<span>{theme === 'dark' ? "Dark" : "Light"}</span>*/}
-            </button>
-        </>
+            {isDark ? <FaMoon className="mr-2" /> : <FaSun className="mr-2" />}
+            <span>{isDark ? "Dark" : "Light"}</span>
+            {/*<span>{theme === 'dark' ? "Dark" : "Light"}</span>*/}
+        </button>
     )
+
 }
