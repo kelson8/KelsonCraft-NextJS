@@ -38,21 +38,13 @@ export default function NotFound() {
         <div className="text-center">
 
             <div>
-                <MainContainer>
-                    <br></br>
-                    <h1 className="text-4xl text-center text-red-600 text-bold">404 Not found</h1>
-                    <br></br>
-
-                    <div
-                        className={containerPageClass}>
+                <MainContainer pageHeader="404 Not Found" headerColor="text-red-600">
                     <h1 className="text-center text-2xl font-bold"> Error 404 </h1>
-            <p> Page not found.
-            <br></br>
+                    <p> Page not found.
+                        <br></br>
+                        Click {BlueLink("/", "Here")} to get back to the main page.</p>
 
-                Click {BlueLink("/", "Here")} to get back to the main page.</p>
-                    </div>
-
-        </MainContainer>
+                </MainContainer>
             </div>
 
         </div>

@@ -12,34 +12,26 @@ type ErrorProps = {
     reset: () => void;
 }
 
-export default function GlobalError({ error, reset }: ErrorProps) {
+export default function GlobalError({error, reset}: ErrorProps) {
     console.log(error);
 
     return (
-    <div className="text-center">
+        <div className="text-center">
 
-        <div>
-            <MainContainer>
-                <br></br>
-                <h1 className="text-4xl text-center text-red-600 text-bold">500 Internal Server Error</h1>
-                <br></br>
-
-                <div
-                    className={containerPageClass}>
+            <div>
+                <MainContainer pageHeader="500 Internal Server Error" headerColor="text-red-600">
                     <h1 className="text-center text-2xl font-bold"> Error 500 </h1>
                     <p> There was an unexpected error in the request.
                         <br></br>
 
                         Click {BlueLink("/", "Here")} to get back to the main page.</p>
 
-                    <button onClick={() => reset()} style={{ marginTop: 16 }}>
+                    <button onClick={() => reset()} style={{marginTop: 16}}>
                         Retry
                     </button>
-                </div>
+                </MainContainer>
+            </div>
 
-            </MainContainer>
         </div>
-
-    </div>
     )
 }
