@@ -29,6 +29,13 @@ services:
     # For now, this just runs the dev server for NextJS.
     command: ["pnpm", "dev", "--hostname", "0.0.0.0"]
 
+  # For caching logins and other stuff.
+  kelsoncraft-redis:
+    container_name: kelsoncraft-redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
 networks:
   testing:
     external: true

@@ -9,7 +9,10 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 COPY package.json pnpm-lock.yaml* ./
 
-RUN pnpm install
+# Fix for the building of this
+# https://github.com/orgs/pnpm/discussions/9109
+# # https://github.com/pnpm/pnpm/issues/11562
+RUN pnpm install --config.confirmModulesPurge=false --dangerously-allow-all-builds
 
 COPY . .
 

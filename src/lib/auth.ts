@@ -10,6 +10,7 @@ import { captcha } from "better-auth/plugins";
 import { haveIBeenPwned } from "better-auth/plugins"
 import Redis from "ioredis";
 import {redisStorage} from "@better-auth/redis-storage";
+import {dockerContainerName, dockerEnabled} from "@/util/constants";
 
 //------
 // Useful links
@@ -33,7 +34,9 @@ import {redisStorage} from "@better-auth/redis-storage";
 // https://better-auth.com/docs/plugins/have-i-been-pwned
 
 const redis = new Redis({
-    host: process.env.REDIS_HOST,
+    // TODO Fix this to use the docker host if docker is enabled in the .env.
+    // host: process.env.REDIS_HOST,
+    host: dockerEnabled ? dockerContainerName: process.env.REDIS_HOST,
     port: 6379,
     // TODO Fix this, it gives a type error.
     // port: process.env.REDIS_PORT,
@@ -73,6 +76,7 @@ export const auth = betterAuth({
     ],
 
     // For Redis and caching logins.
+    // TODO Add a toggle for this
     secondaryStorage: redisStorage({
         client: redis,
         keyPrefix: "better-auth:", // optional, defaults to "better-auth:"
@@ -97,6 +101,15 @@ export const auth = betterAuth({
             strategy: "compact" // or "jwt" or "jwe"
         }
     },
+
+    // https://better-auth.com/docs/authentication/github
+    // Not in use.
+    // socialProviders: {
+    //     github: {
+    //         clientId: process.env.GITHUB_CLIENT_ID as string,
+    //         clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    //     },
+    // },
 
 
 

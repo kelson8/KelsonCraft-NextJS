@@ -5,8 +5,16 @@ import Link from 'next/link';
 import Image from 'next/image'
 import {blogUrl, wikiUrl} from "@/util/constants";
 
-// TODO Make text aligned to the left like it originally was.
-// TODO Cleanup this navbar and add the login/logout buttons.
+// TODO Add the login/logout buttons when the user is not logged in, and a dashboard button when logged in.
+
+export function NavbarPage() {
+    return (
+        <>
+            <NavbarContent/>
+        </>
+    )
+
+}
 
 /**
  * Display a navbar link in the navbar.
@@ -38,30 +46,57 @@ function MobileNavbarLink({href, title, onClick}: { href: string; title: string;
 
 /**
  * Display the logo that also redirects back to the home page for the navbar.
+ * This will also show the register/login buttons once I get the session management setup.
  */
 function DisplayLogoForNavbar() {
     return (
-        <Link href="/" className="text-2xl font-bold text-rose-600 dark:text-rose-400 shrink-0">
-            {/* Display the KelsonCraft Logo */}
-            <Image
-                src="/android-chrome-192x192.png"
-                width={40}
-                height={40}
-                alt="KelsonCraft Logo"
-            />
-        </Link>
-    )
-}
-
-// const Navbar = () => {
-export function NavbarPage() {
-    return (
         <>
-            <NavbarContent/>
+            <ul className="hidden md:flex items-center space-x-6">
+                <li>
+
+                    <Link href="/" className="text-2xl font-bold text-rose-600 dark:text-rose-400 shrink-0">
+                        {/* Display the KelsonCraft Logo */}
+                        <Image
+                            src="/android-chrome-192x192.png"
+                            width={40}
+                            height={40}
+                            alt="KelsonCraft Logo"
+                        />
+                    </Link>
+                </li>
+
+                {/* TODO Enable these later. */}
+                {/*<li><Link href="/login">Login</Link></li>*/}
+                {/*<li><Link href="/register">Register</Link></li>*/}
+                {/*<DisplayLoginPagesForNavbar />*/}
+
+            </ul>
         </>
     )
-
 }
+
+// TODO Make this get if the current user has a session, check the better-auth.session_token
+//  and better-auth.session_data cookie values
+// This isn't currently working.
+// https://stackoverflow.com/questions/75225240/accessing-cookie-client-side-with-next-js
+// function DisplayLoginPagesForNavbar() {
+//     const cookies = useCookies();
+//
+//     // For now, just get the cookies for this but this can easily be spoofed.
+//     // TODO Add server side verification to check if user is logged in.
+//     if(!cookies.get("better-auth.session_token") && !cookies.get("better-auth.session_data")){
+//
+//         return (
+//             <>
+//                 <li><Link href="/login">Login</Link></li>
+//                 <li><Link href="/register">Register</Link></li>
+//             </>
+//             )
+//     } else {
+//
+//     }
+// }
+
 
 /**
  * Display the navbar content
@@ -202,7 +237,6 @@ function DesktopNavbarContent() {
                 </li>
 
             </ul>
-
 
 
             <>

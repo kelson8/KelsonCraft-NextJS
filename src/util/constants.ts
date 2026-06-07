@@ -5,6 +5,14 @@ const currentYear = new Date().getFullYear();
 export const videoUrl: string = "/video-player";
 
 //------
+// Docker
+//------
+// If this is enabled, so far it switches the redis url to the docker host.
+// TODO Make this work and test it later.
+export const dockerEnabled: boolean = false;
+export const dockerContainerName: string = "kelsoncraft-redis";
+
+//------
 // Extra variables
 //------
 export const isProd = process.env.NODE_ENV === "production";
@@ -33,6 +41,7 @@ export const videoPath: string = process.cwd() + "/videos";
 // Routes
 //------
 // Toggle the age encryption route status here
+// https://github.com/FiloSottile/age
 export const ageEncryptionRouteEnabled = false;
 //------
 
@@ -55,21 +64,20 @@ export const websiteSourceUrl: string = "https://github.com/kelson8/KelsonCraft-
 //------
 
 // Default classes for all Tailwind containers on the website.
+// This was used for the secondary container that I used to use.
 export const containerClass = `container mx-auto bg-white border 
   border-gray-300 rounded-lg p-6 
   shadow-lg m-4 dark:bg-gray-800 
   dark:border-gray-700 dark:text-gray-200 text-black`;
 
 // In use for the containers on the pages, adds the gray box around the website contents.
-// TODO Fix this to work with the dark mode toggle.
-export const containerPageClass = `container mx-auto bg-white border border-gray-300
-rounded-lg p-6 shadow-lg m-4 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-200`;
-
-// TODO Enable this once I fix dark mode toggle storage.
-// export const containerPageClass = `container mx-auto bg-white border border-gray-300
-// rounded-lg p-6 shadow-lg m-4 dark:bg-gray-700 bg-white`;
+export const containerPageClass = `container mx-auto bg-white border 
+  border-gray-300 rounded-lg p-6 
+  shadow-lg m-4 dark:bg-gray-700 
+  dark:border-gray-700 dark:text-gray-200`;
 
 // The div class that goes under the containerClass in the tsx.
+// I don't see this in use anywhere.
 export const mainDivClass = `w-full max-w-3xl mx-auto overflow-x-hidden p-4`;
 
 //------
