@@ -9,8 +9,7 @@ import {ArrowUpIcon} from "lucide-react";
 
 const ShadcnUiTestPage = () => {
 
-    // if(!testPagesEnabled) {
-    if(true) {
+    if(!testPagesEnabled) {
         return (
             <div>
                 <DisabledPage />
