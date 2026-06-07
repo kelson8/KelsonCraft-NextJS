@@ -10,7 +10,7 @@ import {miscPagesJsonFile} from "@/util/constants";
 const MiscPage = () => {
     return (
         <div>
-            <MainContainer>
+            <MainContainer pageHeader="" headerColor="text-indigo-500">
                 {/* Display the list of pages for the misc pages from the JSON file. */}
                 {DisplayPageList("/misc", "Misc", "Misc pages for this website", miscPagesJsonFile)}
 

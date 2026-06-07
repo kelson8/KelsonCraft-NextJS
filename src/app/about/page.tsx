@@ -25,17 +25,13 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
 
+    const pageIcon = <FontAwesomeIcon icon={faCircleInfo} />;
+
     return (
         <div>
-            <MainContainer>
-                <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">About page
-                    <FontAwesomeIcon icon={faCircleInfo} />
-                </h1>
-
-                <br></br>
-
-                <div className={containerPageClass}>
+            <MainContainer pageHeader="About page"
+                           pageIcon={pageIcon}
+                           headerColor="text-indigo-500">
                     {/* I split up the about pages into sections. */}
                     <AboutWebsite/>
 
@@ -45,7 +41,6 @@ const AboutPage = () => {
                     <hr className="p-6"></hr>
                     <DisplayCodingAboutTables/>
 
-                </div>
             </MainContainer>
         </div>
 
@@ -127,6 +122,9 @@ function AboutWebsite() {
 
 /**
  * Display the list of coding languages that I know, using a Flowbite Tailwind CSS table.
+ * TODO Make this read from a Markdown file or something.
+ * Look into using this
+ * https://nextjs.org/docs/app/guides/mdx
  */
 function DisplayCodingAboutTables() {
     return (

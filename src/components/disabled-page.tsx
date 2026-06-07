@@ -9,14 +9,11 @@ import Link from "next/link";
 const DisabledPage = () => {
     return (
         <div>
-            <MainContainer>
-                <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">Page not available.</h1>
-                <br></br>
-
+            <MainContainer pageHeader="Page not available." headerColor="text-indigo-500">
                 <div
                     className={containerPageClass}>
                     <p>This website page has been disabled by the server administrators.
+                        <br></br>
                         Click <Link href="/">Here</Link> to get back to the main page.
                     </p>
                 </div>

@@ -18,11 +18,7 @@ const FormTestPage = () => {
 
     return (
         <div>
-            <MainContainer>
-                <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">Form Test</h1>
-                <br></br>
-
+            <MainContainer pageHeader="Form Test" headerColor="text-indigo-500">
                 <div
                     className={containerPageClass}>
                     {/*<FormTestPage />*/}

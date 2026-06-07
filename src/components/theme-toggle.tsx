@@ -74,6 +74,7 @@ function GetCurrentTheme() {
     const [isClient, setIsClient] = useState(false)
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsClient(true);
     }, [])
 
@@ -104,10 +105,12 @@ function DarkModeToggleButton() {
     // useEffect to synchronize 'isDark' state with the actual theme set by the local storage.
     useEffect(() => {
         if (typeof window !== 'undefined') {
+
             // const currentThemeIsDark = document.documentElement.classList.contains("dark");
             const currentTheme = localStorage.getItem('theme');
 
             if(currentTheme === "light") {
+                // eslint-disable-next-line react-hooks/set-state-in-effect
                 setIsDark(false);
                 // setThemeNew("light");
 
@@ -131,18 +134,12 @@ function DarkModeToggleButton() {
             // aria-pressed={effectiveTheme === "dark"}
                 className="flex items-center bg-blue-500 px-4 py-2 text-white hover:bg-blue-400 rounded-full fixed bottom-2 right-2"
             // disabled={!mounted}
-            // onClick={toggleTheme}
                 onClick={() => {
-                    // Toggle the state directly
-                    // setIsDark(prevIsDark => !prevIsDark);
                     toggleTheme();
                 }}>
 
-            {/*{theme === 'dark' ? <FaMoon className="mr-2" /> : <FaSun className="mr-2" />}*/}
-
             {isDark ? <FaMoon className="mr-2" /> : <FaSun className="mr-2" />}
             <span>{isDark ? "Dark" : "Light"}</span>
-            {/*<span>{theme === 'dark' ? "Dark" : "Light"}</span>*/}
         </button>
     )
 

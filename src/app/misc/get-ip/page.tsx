@@ -16,11 +16,7 @@ const GetIpPage = () => {
 
     return (
         <div>
-            <MainContainer>
-                <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">IP Address</h1>
-                <br></br>
-
+            <MainContainer pageHeader="IP Address" headerColor="text-indigo-500">
                 <div className={containerPageClass}>
                     {/*<p className="text-center"></p>*/}
                     <p className="text-center">Your ip: {ip}</p>

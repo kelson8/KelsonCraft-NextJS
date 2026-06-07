@@ -29,45 +29,32 @@ const DashboardPage = async () => {
             return (
                 <div>
 
-                    <MainContainer>
+                    <MainContainer pageHeader="Login required" headerColor="text-indigo-500">
                         <br></br>
 
-                        <div className={containerPageClass}>
-
-                            <h1 className="text-4xl text-center text-indigo-500 text-bold">Login required</h1>
-                            <br></br>
-                            <Link href="/login" className={blueButtonClass}>Sign In</Link>
-                            <Link href="/register" className={blueButtonClass}>Sign Up</Link>
-
-                        </div>
+                        <Link href="/login" className={blueButtonClass}>Sign In</Link>
+                        <Link href="/register" className={blueButtonClass}>Sign Up</Link>
                     </MainContainer>
                 </div>
             )
         } else {
             return (
                 <div>
-                    <MainContainer>
+                    <MainContainer pageHeader="Dashboard" headerColor="text-indigo-500">
+                        <h1 className={mainHeaderClass}>Welcome to the dashboard</h1>
+
+                        <p> User ID: {session.user.id}</p>
+                        <p> User Email: {session.user.email}</p>
+                        <p> User Name: {session.user.name}</p>
+
+                        <p> User created on: {session.user.createdAt.toString()}</p>
+
                         <br></br>
-                        <h1 className="text-4xl text-center text-indigo-500 text-bold">Dashboard</h1>
-                        <br></br>
 
-                        <div className={containerPageClass}>
+                        <form action={SignoutAction}>
+                            <button type="submit" className={blueButtonClass}>Sign Out</button>
+                        </form>
 
-                            <h1 className={mainHeaderClass}>Welcome to the dashboard</h1>
-
-                            <p> User ID: {session.user.id}</p>
-                            <p> User Email: {session.user.email}</p>
-                            <p> User Name: {session.user.name}</p>
-
-                            <p> User created on: {session.user.createdAt.toString()}</p>
-
-                            <br></br>
-
-                            <form action={SignoutAction}>
-                                <button type="submit" className={blueButtonClass}>Sign Out</button>
-                            </form>
-
-                        </div>
                     </MainContainer>
                 </div>
             );

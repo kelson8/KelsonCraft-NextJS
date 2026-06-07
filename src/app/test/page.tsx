@@ -19,10 +19,8 @@ const TestPage = () => {
 
     return (
         <div>
-            <MainContainer>
+            <MainContainer pageHeader="" headerColor="text-indigo-500">
                 {DisplayPageList("/test", "Test", "Testing page for the site", testPagesJsonFile)}
-
-
             </MainContainer>
         </div>
 

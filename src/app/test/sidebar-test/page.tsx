@@ -8,25 +8,18 @@ import DisabledPage from "@/components/disabled-page";
 // TODO Fix this to work with my current CSS setup.
 
 const SidebarTestPage = () => {
-    if(!testPagesEnabled) {
+    if (!testPagesEnabled) {
         return (
             <div>
-                <DisabledPage />
+                <DisabledPage/>
             </div>
         )
     }
 
     return (
         <div>
-            <MainContainer>
-                <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">Search</h1>
-                <br></br>
-
-                <div
-                    className={containerPageClass}>
-                    <SidebarTest />
-                </div>
+            <MainContainer pageHeader="Sidebar test" headerColor="text-indigo-500">
+                <SidebarTest/>
             </MainContainer>
         </div>
 

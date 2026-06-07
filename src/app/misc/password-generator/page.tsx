@@ -41,7 +41,7 @@ const PasswordGeneratorTestPage = () => {
     const newRandomPassword = GenerateRandomPassword(passwordLength);
 
     const setPassword = () => {
-        if(newRandomPassword !== "") {
+        if (newRandomPassword !== "") {
             setRandomPassword(newRandomPassword);
         }
         // } else {
@@ -53,83 +53,74 @@ const PasswordGeneratorTestPage = () => {
     // console.log(randomPassword);
     return (
         <div>
-            <MainContainer>
-                <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">Password generator</h1>
-                <br></br>
+            <MainContainer pageHeader="Password generator" headerColor="text-indigo-500">
+                <button className={blueButtonClass} onClick={() => setPassword()}>
+                    Generate Random password
+                </button>
+                <p className="p-2">Random password: {randomPassword}</p>
 
-                <div className={containerPageClass}>
-                    <button className={blueButtonClass} onClick={() => setPassword()}>
-                        Generate Random password
-                    </button>
-                    <p className="p-2">Random password: {randomPassword}</p>
-
-                    {/* Password generator checkboxes */}
+                {/* Password generator checkboxes */}
 
 
-
-                    {/*<div className="flex items-center mb-4">*/}
-                    {/*    <input*/}
-                    {/*        type="checkbox"*/}
-                    {/*        checked={useSpecialChars}*/}
-                    {/*        onChange={setUseSpecialChars}*/}
-                    {/*        value=""*/}
-                    {/*        className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>*/}
-                    {/*    <label htmlFor="default-checkbox" className="select-none ms-2 text-sm font-medium text-heading">*/}
-                    {/*        Use special chars*/}
-                    {/*    </label>*/}
-                    {/*</div>*/}
-
-
-                    {/*<div className="flex items-center">*/}
-                    {/*    <input*/}
-                    {/*        type="checkbox"*/}
-                    {/*        checked={useUppercase}*/}
-                    {/*        onChange={setUseUppercase}*/}
-                    {/*        value=""*/}
-                    {/*        className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>*/}
-                    {/*    <label htmlFor="checked-checkbox" className="select-none ms-2 text-sm font-medium text-heading">*/}
-                    {/*        Use capital letters*/}
-                    {/*    </label>*/}
-                    {/*</div>*/}
-                    {/*<div className="flex items-center">*/}
-                    {/*    <input*/}
-                    {/*        type="checkbox"*/}
-                    {/*        checked={useLowercase}*/}
-                    {/*        onChange={setUseLowercase}*/}
-                    {/*        value=""*/}
-                    {/*        className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>*/}
-                    {/*    <label htmlFor="checked-checkbox" className="select-none ms-2 text-sm font-medium text-heading">*/}
-                    {/*        Use lowercase letters*/}
-                    {/*    </label>*/}
-                    {/*</div>*/}
-
-                    {/*<div className="flex items-center">*/}
-                    {/*    <input*/}
-                    {/*        type="checkbox"*/}
-                    {/*        checked={useNumbers}*/}
-                    {/*        onChange={setUseNumbers}*/}
-                    {/*        value=""*/}
-                    {/*        className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>*/}
-                    {/*    <label htmlFor="checked-checkbox" className="select-none ms-2 text-sm font-medium text-heading">*/}
-                    {/*        Use numbers*/}
-                    {/*    </label>*/}
-                    {/*</div>*/}
-
-                    {/*<div className="flex items-center">*/}
-                    {/*    <input*/}
-                    {/*        type="checkbox"*/}
-                    {/*        checked={useSymbols}*/}
-                    {/*        onChange={setUseSymbols}*/}
-                    {/*        value=""*/}
-                    {/*        className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>*/}
-                    {/*    <label htmlFor="checked-checkbox" className="select-none ms-2 text-sm font-medium text-heading">*/}
-                    {/*        Use symbols*/}
-                    {/*    </label>*/}
-                    {/*</div>*/}
+                {/*<div className="flex items-center mb-4">*/}
+                {/*    <input*/}
+                {/*        type="checkbox"*/}
+                {/*        checked={useSpecialChars}*/}
+                {/*        onChange={setUseSpecialChars}*/}
+                {/*        value=""*/}
+                {/*        className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>*/}
+                {/*    <label htmlFor="default-checkbox" className="select-none ms-2 text-sm font-medium text-heading">*/}
+                {/*        Use special chars*/}
+                {/*    </label>*/}
+                {/*</div>*/}
 
 
-                </div>
+                {/*<div className="flex items-center">*/}
+                {/*    <input*/}
+                {/*        type="checkbox"*/}
+                {/*        checked={useUppercase}*/}
+                {/*        onChange={setUseUppercase}*/}
+                {/*        value=""*/}
+                {/*        className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>*/}
+                {/*    <label htmlFor="checked-checkbox" className="select-none ms-2 text-sm font-medium text-heading">*/}
+                {/*        Use capital letters*/}
+                {/*    </label>*/}
+                {/*</div>*/}
+                {/*<div className="flex items-center">*/}
+                {/*    <input*/}
+                {/*        type="checkbox"*/}
+                {/*        checked={useLowercase}*/}
+                {/*        onChange={setUseLowercase}*/}
+                {/*        value=""*/}
+                {/*        className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>*/}
+                {/*    <label htmlFor="checked-checkbox" className="select-none ms-2 text-sm font-medium text-heading">*/}
+                {/*        Use lowercase letters*/}
+                {/*    </label>*/}
+                {/*</div>*/}
+
+                {/*<div className="flex items-center">*/}
+                {/*    <input*/}
+                {/*        type="checkbox"*/}
+                {/*        checked={useNumbers}*/}
+                {/*        onChange={setUseNumbers}*/}
+                {/*        value=""*/}
+                {/*        className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>*/}
+                {/*    <label htmlFor="checked-checkbox" className="select-none ms-2 text-sm font-medium text-heading">*/}
+                {/*        Use numbers*/}
+                {/*    </label>*/}
+                {/*</div>*/}
+
+                {/*<div className="flex items-center">*/}
+                {/*    <input*/}
+                {/*        type="checkbox"*/}
+                {/*        checked={useSymbols}*/}
+                {/*        onChange={setUseSymbols}*/}
+                {/*        value=""*/}
+                {/*        className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>*/}
+                {/*    <label htmlFor="checked-checkbox" className="select-none ms-2 text-sm font-medium text-heading">*/}
+                {/*        Use symbols*/}
+                {/*    </label>*/}
+                {/*</div>*/}
             </MainContainer>
         </div>
 

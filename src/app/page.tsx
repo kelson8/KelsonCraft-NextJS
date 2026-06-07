@@ -41,13 +41,11 @@ import Link from "next/link";
 
 const HomePage = () => {
 
+    const websiteHomeIcon = <FontAwesomeIcon icon={faServer} className="fas fa-server"></FontAwesomeIcon>
+
     return (
         <div>
-            <MainContainer>
-                <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">Home Page
-                    <FontAwesomeIcon icon={faServer} className="fas fa-server"
-                                     style={{color: "whitesmoke"}}></FontAwesomeIcon></h1>
+            <MainContainer pageHeader="Home Page" pageIcon={websiteHomeIcon} headerColor="text-indigo-500">
                 <br></br>
 
                 <HomePageContents/>

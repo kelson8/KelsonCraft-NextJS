@@ -174,7 +174,7 @@ export async function ReadWebpageJsonFile(webPage: string, fileName: string) {
                     key={id}>
                     <li><Link className={blueLinkCss} href={webPage + '/' + id}>{page.title} </Link>
                         {/*<div>{page.description || <em>No description</em>}</div>*/}
-                        {page.description}
+                         - {page.description}
                     </li>
                 </ul>
             ))}

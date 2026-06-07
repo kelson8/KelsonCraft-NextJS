@@ -6,37 +6,66 @@ import {authRoutesEnabled, containerPageClass} from "@/util/constants";
 import DisabledPage from "@/components/disabled-page";
 import {LoginForm} from "@/components/auth/login-form";
 import Link from "next/link";
+import {auth} from "@/lib/auth";
+import {headers} from "next/headers";
 
 // TODO Fix this to work properly.
 
-const LoginPage = () => {
+const LoginPage = async () => {
+// const LoginPage = () => {
     // const router = useRouter();
     // const [error, setError] = useState<string | null>(null);
 
-    if(!authRoutesEnabled) {
+    // https://nextjs.org/docs/app/guides/redirecting
+    // Well this cannot be used an async function.
+    // const router = useRouter();
+
+    // Well this doesn't properly work, it stores the session but it expires with the cookie
+    // and isn't cached anymore for some reason.
+    // const session = await auth.api.getSession({
+    //     headers: await headers(),
+    //     // headers: React.use(headers()),
+    // });
+
+    if (!authRoutesEnabled) {
         return (
-            <DisabledPage />
+            <DisabledPage/>
         );
     } else {
+        // if(!session) {
+
+
         return (
             <div>
-                <MainContainer>
+                <MainContainer pageHeader="Login" headerColor="text-indigo-500">
+                    <LoginForm/>
+
                     <br></br>
-                    <h1 className="text-4xl text-center text-indigo-500 text-bold">Login</h1>
-                    <br></br>
+                    <p>Don&#39;t have an account? Click <Link href="/register">Here</Link> to register</p>
 
-                    <div
-                        className={containerPageClass}>
-                        <LoginForm />
-
-                        <br></br>
-                        <p>Don&#39;t have an account? Click <Link href="/register">Here</Link> to register</p>
-
-                    </div>
                 </MainContainer>
             </div>
-
         );
+        // } else {
+        //     return (
+        //         <div>
+        //             <MainContainer>
+        //                 <h1 className="text-4xl text-center text-indigo-500 text-bold">Logged in</h1>
+        //                 <br></br>
+        //
+        //                 <div
+        //                     className={containerPageClass}>
+        //                     <p></p>
+        //
+        //                     <p>Click <Link href="/dashboard">Here</Link> to go to the dashboard</p>
+        //
+        //                 </div>
+        //
+        //             </MainContainer>
+        //
+        //         </div>
+        //     )
+        // }
     }
 }
 

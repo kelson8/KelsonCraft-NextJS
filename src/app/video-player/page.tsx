@@ -15,10 +15,7 @@ export const metadata: Metadata = {
 const VideoListPage = () => {
     return (
         <div>
-            <MainContainer>
-                <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">Video list</h1>
-                <br></br>
+            <MainContainer pageHeader="Video list" headerColor="text-indigo-500">
                 <VideoListPageContents/>
             </MainContainer>
         </div>

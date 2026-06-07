@@ -18,15 +18,15 @@ const SearchTestPage = () => {
 
     return (
         <div>
-            <MainContainer>
+            <MainContainer pageHeader="Search" headerColor="text-indigo-500">
                 <br></br>
-                <h1 className="text-4xl text-center text-indigo-500 text-bold">Search</h1>
+                {/*<h1 className="text-4xl text-center text-indigo-500 text-bold">Search</h1>*/}
                 <br></br>
 
-                <div
-                    className={containerPageClass}>
+                {/*<div*/}
+                {/*    className={containerPageClass}>*/}
                     <SearchTest />
-                </div>
+                {/*</div>*/}
             </MainContainer>
         </div>
 
