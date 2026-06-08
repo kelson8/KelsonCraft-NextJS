@@ -7,6 +7,9 @@ backups/
 
 src/_api/
 
+src/logs/
+logs/
+
 # Test pages, might commit later
 #src/app/test
 src/app/test/video-test
@@ -17,6 +20,11 @@ src/components/get-user-info.tsx
 # Other incomplete/test pages
 src/components/display-video-file.tsx
 src/components/plyr-video-player.tsx
+
+# Local network testing
+src/app/local
+src/components/local
+src/app/api/stream
 
 # SQLite databases
 *.db
